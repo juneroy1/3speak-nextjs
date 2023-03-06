@@ -209,9 +209,13 @@ const TabsDemo = () => {
                   backgroundColor="#bee5eb"
                   border="1px solid #bee5eb"
                 >
-                  <Typography textAlign="center" color="#0c5460">
-                    {/* fontSize="1.75rem" */}
-                    {t("register.passwordRules")}
+                  <Typography color="#0c5460">
+                    {/* fontSize="0.75rem" */}
+                    <StyledList>
+                      {(t("register.passwordRules") as string[]).map((rule) => (
+                        <li key={rule}>{rule}</li>
+                      ))}
+                    </StyledList>
                   </Typography>
                 </Box>
               </fieldset>
@@ -232,6 +236,10 @@ const GetAccountText = styled(Typography)`
     text-decoration: underline;
     color: #001fff;
   }
+`;
+
+const StyledList = styled.ul`
+  padding-left: 0.5rem;
 `;
 
 const StyledButton = styled.button<{
