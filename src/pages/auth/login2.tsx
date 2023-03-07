@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useRef } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
@@ -7,12 +7,19 @@ import { Formik } from "formik";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-export-i18n";
 import { Typography, Box, Flex } from "src/components";
-
+import ReCAPTCHA from "react-google-recaptcha";
+import SignUp from "@/components/signup/SignUp";
 const TabsDemo = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const recaptchaRef: any = useRef();
 
+  const onSubmitWithReCAPTCHA = async () => {
+    const token = await recaptchaRef.current.executeAsync();
+    console.log(token);
+    // apply to form data
+  };
   return (
     <Flex
       justifyContent="center"
@@ -77,7 +84,7 @@ const TabsDemo = () => {
               }}
             >
               {(props) => (
-                <form onSubmit={props.handleSubmit}>
+                <form onSubmit={onSubmitWithReCAPTCHA}>
                   <Box mb="2rem" mt="1.5rem" width="100%">
                     <fieldset className="Fieldset">
                       <label className="Label" htmlFor="currentPassword">
@@ -140,6 +147,7 @@ const TabsDemo = () => {
                       )}
                     </fieldset>
                   </Box>
+                 
                   <Flex width="100%" justifyContent="center" mt="1rem">
                     <StyledButton type="submit">Log in</StyledButton>
                   </Flex>
@@ -170,223 +178,75 @@ const TabsDemo = () => {
                 width="100%"
               />
             </Box>
-            <Box mb="2rem" mt="1.5rem" width="100%">
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="emailAddress">
-                  Email Address
-                </label>
-                <input
-                  className="Input"
-                  id="emailAddress"
-                  placeholder="Enter email"
-                  type="email"
+            <form onSubmit={onSubmitWithReCAPTCHA}>
+              <Box mb="2rem" mt="1.5rem" width="100%">
+                <fieldset className="Fieldset">
+                  <label className="Label" htmlFor="emailAddress">
+                    Email Address
+                  </label>
+                  <input
+                    className="Input"
+                    id="emailAddress"
+                    placeholder="Enter email"
+                    type="email"
+                  />
+                </fieldset>
+                <fieldset className="Fieldset">
+                  <label className="Label" htmlFor="username">
+                    Username / Channel name
+                  </label>
+                  <input
+                    className="Input"
+                    id="username"
+                    placeholder="Enter channel"
+                    type="text"
+                  />
+                </fieldset>
+                <fieldset className="Fieldset">
+                  <label className="Label" htmlFor="password">
+                    Password
+                  </label>
+                  <input
+                    className="Input"
+                    id="password"
+                    placeholder="Enter password"
+                    type="password"
+                  />
+                  <Box
+                    width="100%"
+                    borderRadius="0.25rem"
+                    mt="1.5rem"
+                    py="0.75rem"
+                    px="1.25rem"
+                    backgroundColor="#bee5eb"
+                    border="1px solid #bee5eb"
+                  >
+                    <Typography color="#0c5460">
+                      {/* fontSize="0.75rem" */}
+                      <StyledList>
+                        {(t("register.passwordRules") as string[]).map(
+                          (rule) => (
+                            <li key={rule}>{rule}</li>
+                          )
+                        )}
+                      </StyledList>
+                    </Typography>
+                  </Box>
+                </fieldset>
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey="6LczvdokAAAAAGQtbk2MABrUD8oyYbmi9Z3O8Uio"
                 />
-              </fieldset>
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="username">
-                  Username / Channel name
-                </label>
-                <input
-                  className="Input"
-                  id="username"
-                  placeholder="Enter channel"
-                  type="text"
-                />
-              </fieldset>
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="password">
-                  Password
-                </label>
-                <input
-                  className="Input"
-                  id="password"
-                  placeholder="Enter password"
-                  type="password"
-                />
-                <Box
-                  width="100%"
-                  borderRadius="0.25rem"
-                  mt="1.5rem"
-                  py="0.75rem"
-                  px="1.25rem"
-                  backgroundColor="#bee5eb"
-                  border="1px solid #bee5eb"
-                >
-                  <Typography color="#0c5460">
-                    {/* fontSize="0.75rem" */}
-                    <StyledList>
-                      {(t("register.passwordRules") as string[]).map((rule) => (
-                        <li key={rule}>{rule}</li>
-                      ))}
-                    </StyledList>
-                  </Typography>
-                </Box>
-              </fieldset>
-              <Flex width="100%" justifyContent="center" mt="1rem">
-                <StyledButton type="submit">Sign Up</StyledButton>
-              </Flex>
-            </Box>
+                <Flex width="100%" justifyContent="center" mt="1rem">
+                  <StyledButton type="submit">Sign Up</StyledButton>
+                </Flex>
+              </Box>
+            </form>
           </Box>
         </Tabs.Content>
         <Tabs.Content className="TabsContent" value="tab3">
-          <Box width="100%">
-            <Box mx="auto" maxWidth="9rem">
-              <img
-                src="https://s3.eu-central-1.wasabisys.com/data.int/logo_player.png"
-                alt="3speak logo"
-                width="100%"
-              />
-            </Box>
-            <Box
-              width="100%"
-              borderRadius="0.25rem"
-              mt="1.5rem"
-              py="0.75rem"
-              px="1.25rem"
-              backgroundColor="#f8d7da"
-              border="1px solid #f5c6cb"
-            >
-              <Typography textAlign="center" color="#721c24">
-                Some email services will wrongly sort our our emails, remember
-                to check your junk/spam folder!
-              </Typography>
-            </Box>
-            <Box
-              width="100%"
-              borderRadius="0.25rem"
-              mt="1.5rem"
-              py="0.75rem"
-              px="1.25rem"
-              backgroundColor="#f8d7da"
-              border="1px solid #f5c6cb"
-            >
-              <Typography textAlign="center" color="#721c24">
-                In order to claim the keys for the Hive account associated with
-                your 3speak account you must post at least one video.
-              </Typography>
-            </Box>
-            <Formik
-              initialValues={{ password: "", email: "" }}
-              validate={(props) => {
-                const errors: any = {};
-
-                if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(props.email)) {
-                  errors.email = t("login.notValidEmail");
-                }
-
-                if (!props.password) errors.password = t("required");
-                if (!props.email) errors.email = t("required");
-
-                return errors;
-              }}
-              onSubmit={(values) => {
-                console.log(values, "submit");
-              }}
-            >
-              {(props) => (
-                <form onSubmit={props.handleSubmit}>
-                  <Box mb="2rem" mt="1.5rem" width="100%">
-                    <fieldset className="Fieldset">
-                      <label className="Label" htmlFor="currentPassword">
-                        Email
-                      </label>
-                      <input
-                        className="Input"
-                        id="email"
-                        placeholder={t("login.email")}
-                        type="email"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        name="email"
-                      />
-                      {!!props.errors.email && (
-                        <Typography color="#FF3333">
-                          {props.errors.email}
-                        </Typography>
-                      )}
-                    </fieldset>
-                    {/* <StyledInput
-                    type="string"
-                    className="Input"
-                    placeholder={t("login.email")}
-                    onChange={props.handleChange}
-                    onBlur={props.handleBlur}
-                    error={!!props.errors.email}
-                    name="email"
-                    id="email"
-                  /> */}
-                  </Box>
-                  <Box width="100%">
-                    <fieldset className="Fieldset">
-                      <label className="Label" htmlFor="username">
-                        Hive username
-                      </label>
-                      <input
-                        className="Input"
-                        id="username"
-                        placeholder="hive username"
-                        type="text"
-                      />
-                    </fieldset>
-                  </Box>
-                  <Box width="100%">
-                    {/* <StyledInput
-                    type="password"
-                    className="Input"
-                    placeholder={t("login.password")}
-                    onChange={props.handleChange}
-                    onBlur={props.handleBlur}
-                    error={!!props.errors.password}
-                    name="password"
-                    id="password"
-                  /> */}
-                    <fieldset className="Fieldset">
-                      <label className="Label" htmlFor="newPassword">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        className="Input"
-                        placeholder={t("login.password")}
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        name="password"
-                        id="password"
-                      />
-                      {!!props.errors.password && (
-                        <Typography mt="0.25rem" color="#FF3333">
-                          {props.errors.password}
-                        </Typography>
-                      )}
-                    </fieldset>
-                    <Box
-                      width="100%"
-                      borderRadius="0.25rem"
-                      mt="1.5rem"
-                      py="0.75rem"
-                      px="1.25rem"
-                      backgroundColor="#bee5eb"
-                      border="1px solid #bee5eb"
-                    >
-                      <Typography color="#0c5460">
-                        {/* fontSize="0.75rem" */}
-                        <StyledList>
-                          {(t("register.passwordRules") as string[]).map(
-                            (rule) => (
-                              <li key={rule}>{rule}</li>
-                            )
-                          )}
-                        </StyledList>
-                      </Typography>
-                    </Box>
-                  </Box>
-                  <Flex width="100%" justifyContent="center" mt="1rem">
-                    <StyledButton type="submit">Sign Up</StyledButton>
-                  </Flex>
-                </form>
-              )}
-            </Formik>
-          </Box>
+          <SignUp/>
+          
         </Tabs.Content>
       </Tabs.Root>
     </Flex>
