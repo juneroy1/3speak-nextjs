@@ -12,16 +12,16 @@ const SignUp = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const recaptchaRef: any = useRef();
+  const recaptchaRefSignUp: any = useRef();
 
-  const onSubmitWithReCAPTCHA = async () => {
-    const token = await recaptchaRef.current.executeAsync();
+  const onSubmitWithReCAPTCHASignUp = async () => {
+    const token = await recaptchaRefSignUp.current.executeAsync();
     console.log(token);
     // apply to form data
   };
   return (
     <div>
-      <form onSubmit={onSubmitWithReCAPTCHA}>
+      <form onSubmit={onSubmitWithReCAPTCHASignUp}>
         <Box width="100%">
           <Box mx="auto" maxWidth="9rem">
             <img
@@ -155,7 +155,7 @@ const SignUp = () => {
                   </Box>
                 </Box>
                 <ReCAPTCHA
-                  ref={recaptchaRef}
+                  ref={recaptchaRefSignUp}
                   sitekey="6LczvdokAAAAAGQtbk2MABrUD8oyYbmi9Z3O8Uio"
                 />
                 <Flex width="100%" justifyContent="center" mt="1rem">

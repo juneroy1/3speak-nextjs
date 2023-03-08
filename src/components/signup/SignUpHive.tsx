@@ -16,10 +16,10 @@ const SignUpHive = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const recaptchaRef: any = useRef();
+  const recaptchaRefSignUpHive: any = useRef();
 
-  const onSubmitWithReCAPTCHA = async () => {
-    const token = await recaptchaRef.current.executeAsync();
+  const onSubmitWithReCAPTCHASignUpHive = async () => {
+    const token = await recaptchaRefSignUpHive.current.executeAsync();
     console.log(token);
     // apply to form data
   };
@@ -32,7 +32,7 @@ const SignUpHive = () => {
           width="100%"
         />
       </Box>
-      <form onSubmit={onSubmitWithReCAPTCHA}>
+      <form onSubmit={onSubmitWithReCAPTCHASignUpHive}>
         <Box mb="2rem" mt="1.5rem" width="100%">
           <fieldset className="Fieldset">
             <label className="Label" htmlFor="emailAddress">
@@ -86,7 +86,7 @@ const SignUpHive = () => {
             </Box>
           </fieldset>
           <ReCAPTCHA
-            ref={recaptchaRef}
+            ref={recaptchaRefSignUpHive}
             sitekey="6LczvdokAAAAAGQtbk2MABrUD8oyYbmi9Z3O8Uio"
           />
           <Flex width="100%" justifyContent="center" mt="1rem">

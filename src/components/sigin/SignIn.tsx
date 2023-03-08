@@ -15,10 +15,10 @@ const SignIn = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const recaptchaRef: any = useRef();
+  const recaptchaRefSignIn: any = useRef();
 
-  const onSubmitWithReCAPTCHA = async () => {
-    const token = await recaptchaRef.current.executeAsync();
+  const onSubmitWithReCAPTCHASignIn = async () => {
+    const token = await recaptchaRefSignIn.current.executeAsync();
     console.log(token);
     // apply to form data
   };
@@ -51,7 +51,7 @@ const SignIn = () => {
         }}
       >
         {(props) => (
-          <form onSubmit={onSubmitWithReCAPTCHA}>
+          <form onSubmit={onSubmitWithReCAPTCHASignIn}>
             <Box mb="2rem" mt="1.5rem" width="100%">
               <fieldset className="Fieldset">
                 <label className="Label" htmlFor="currentPassword">
@@ -70,28 +70,8 @@ const SignIn = () => {
                   <Typography color="#FF3333">{props.errors.email}</Typography>
                 )}
               </fieldset>
-              {/* <StyledInput
-                      type="string"
-                      className="Input"
-                      placeholder={t("login.email")}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      error={!!props.errors.email}
-                      name="email"
-                      id="email"
-                    /> */}
             </Box>
             <Box width="100%">
-              {/* <StyledInput
-                      type="password"
-                      className="Input"
-                      placeholder={t("login.password")}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      error={!!props.errors.password}
-                      name="password"
-                      id="password"
-                    /> */}
               <fieldset className="Fieldset">
                 <label className="Label" htmlFor="newPassword">
                   Password
@@ -126,6 +106,10 @@ const SignIn = () => {
                 {t("login.disclaimer")}
               </Typography>
             </Box>
+            <ReCAPTCHA
+              ref={recaptchaRefSignIn}
+              sitekey="6LczvdokAAAAAGQtbk2MABrUD8oyYbmi9Z3O8Uio"
+            />
             <Flex width="100%" justifyContent="center" mt="1rem">
               <StyledButton type="submit">Log in</StyledButton>
             </Flex>
