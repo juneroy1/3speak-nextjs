@@ -35,8 +35,8 @@ const TabsDemo = () => {
           <Tabs.Trigger className="TabsTrigger" value="tab1">
             Sign In
           </Tabs.Trigger>
-          <Tabs.Trigger className="TabsTrigger" value="tab2">
-            Sign Up with Hive Account
+          <Tabs.Trigger className="TabsTrigger text-center" value="tab2">
+            Sign Up with Hive
           </Tabs.Trigger>
           <Tabs.Trigger className="TabsTrigger" value="tab3">
             Sign Up
@@ -51,20 +51,7 @@ const TabsDemo = () => {
                 width="100%"
               />
             </Box>
-            <Box
-              width="100%"
-              borderRadius="0.25rem"
-              mt="1.5rem"
-              py="0.75rem"
-              px="1.25rem"
-              backgroundColor="#f8d7da"
-              border="1px solid #f5c6cb"
-            >
-              <Typography textAlign="center" color="#721c24">
-                {/* fontSize="1.75rem" */}
-                {t("login.disclaimer")}
-              </Typography>
-            </Box>
+
             <Formik
               initialValues={{ password: "", email: "" }}
               validate={(props) => {
@@ -147,7 +134,20 @@ const TabsDemo = () => {
                       )}
                     </fieldset>
                   </Box>
-                 
+                  <Box
+                    width="100%"
+                    borderRadius="0.25rem"
+                    mt="1.5rem"
+                    py="0.75rem"
+                    px="1.25rem"
+                    backgroundColor="#f8d7da"
+                    border="1px solid #f5c6cb"
+                  >
+                    <Typography textAlign="center" color="#721c24">
+                      {/* fontSize="1.75rem" */}
+                      {t("login.disclaimer")}
+                    </Typography>
+                  </Box>
                   <Flex width="100%" justifyContent="center" mt="1rem">
                     <StyledButton type="submit">Log in</StyledButton>
                   </Flex>
@@ -245,8 +245,7 @@ const TabsDemo = () => {
           </Box>
         </Tabs.Content>
         <Tabs.Content className="TabsContent" value="tab3">
-          <SignUp/>
-          
+          <SignUp />
         </Tabs.Content>
       </Tabs.Root>
     </Flex>

@@ -30,34 +30,7 @@ const SignUp = () => {
               width="100%"
             />
           </Box>
-          <Box
-            width="100%"
-            borderRadius="0.25rem"
-            mt="1.5rem"
-            py="0.75rem"
-            px="1.25rem"
-            backgroundColor="#f8d7da"
-            border="1px solid #f5c6cb"
-          >
-            <Typography textAlign="center" color="#721c24">
-              Some email services will wrongly sort our our emails, remember to
-              check your junk/spam folder!
-            </Typography>
-          </Box>
-          <Box
-            width="100%"
-            borderRadius="0.25rem"
-            mt="1.5rem"
-            py="0.75rem"
-            px="1.25rem"
-            backgroundColor="#f8d7da"
-            border="1px solid #f5c6cb"
-          >
-            <Typography textAlign="center" color="#721c24">
-              In order to claim the keys for the Hive account associated with
-              your 3speak account you must post at least one video.
-            </Typography>
-          </Box>
+
           <Formik
             initialValues={{ password: "", email: "" }}
             validate={(props) => {
@@ -170,6 +143,34 @@ const SignUp = () => {
                           )
                         )}
                       </StyledList>
+                    </Typography>
+                  </Box>
+                  <Box
+                    width="100%"
+                    borderRadius="0.25rem"
+                    mt="1.5rem"
+                    py="0.75rem"
+                    px="1.25rem"
+                    backgroundColor="#f8d7da"
+                    border="1px solid #f5c6cb"
+                  >
+                    <Typography textAlign="center" color="#721c24">
+                      Some email services will wrongly sort our our emails,
+                      remember to check your junk/spam folder!
+                    </Typography>
+                  </Box>
+                  <Box
+                    width="100%"
+                    borderRadius="0.25rem"
+                    mt="1.5rem"
+                    py="0.75rem"
+                    px="1.25rem"
+                    backgroundColor="#f8d7da"
+                    border="1px solid #f5c6cb"
+                  >
+                    <Typography textAlign="center" color="#721c24">
+                      In order to claim the keys for the Hive account associated
+                      with your 3speak account you must post at least one video.
                     </Typography>
                   </Box>
                 </Box>
