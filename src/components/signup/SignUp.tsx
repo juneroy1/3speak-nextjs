@@ -71,16 +71,6 @@ const SignUp = () => {
                       </Typography>
                     )}
                   </fieldset>
-                  {/* <StyledInput
-                    type="string"
-                    className="Input"
-                    placeholder={t("login.email")}
-                    onChange={props.handleChange}
-                    onBlur={props.handleBlur}
-                    error={!!props.errors.email}
-                    name="email"
-                    id="email"
-                  /> */}
                 </Box>
                 <Box width="100%">
                   <fieldset className="Fieldset">
@@ -96,16 +86,6 @@ const SignUp = () => {
                   </fieldset>
                 </Box>
                 <Box width="100%">
-                  {/* <StyledInput
-                    type="password"
-                    className="Input"
-                    placeholder={t("login.password")}
-                    onChange={props.handleChange}
-                    onBlur={props.handleBlur}
-                    error={!!props.errors.password}
-                    name="password"
-                    id="password"
-                  /> */}
                   <fieldset className="Fieldset">
                     <label className="Label" htmlFor="newPassword">
                       Password
