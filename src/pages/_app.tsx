@@ -10,6 +10,8 @@ import styled from "styled-components";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "bootstrap/dist/css/bootstrap.css";
+
+import { ChakraProvider } from "@chakra-ui/react";
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -21,7 +23,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <StyledGrid>
         <Box>{!isAuth && <Sidebar />}</Box>
         <Box backgroundColor="#fafafa">
-          <Component {...pageProps} />
+          <ChakraProvider>
+            <Component {...pageProps} />
+          </ChakraProvider>
         </Box>
       </StyledGrid>
     </Provider>
