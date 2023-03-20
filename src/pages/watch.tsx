@@ -24,8 +24,27 @@ import {
   Button,
   Avatar,
 } from "@chakra-ui/react";
-import { AddIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import {
+  AddIcon,
+  ChevronDownIcon,
+  ViewIcon,
+  WarningTwoIcon,
+} from "@chakra-ui/icons";
 import { useState } from "react";
+import ReactJWPlayer from "react-jw-player";
+import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+} from "@chakra-ui/react";
+const displayName = "ReactJWPlayerContainer";
+
 export default function Watch() {
   const [showLess, setShowLess] = useState(true);
   const showLessFunction = () => {
@@ -39,14 +58,37 @@ export default function Watch() {
           <Flex color="white" padding={"10px"}>
             <Box flex="1">
               <Box borderRadius={4} boxShadow="base" mr={2} flex="1" bg="white">
-                <Box m={5} bg="white" p={4} color="black">
-                  <AspectRatio maxW="100%" height={"500px"} ratio={1}>
+                <Box
+                  m={5}
+                  bg="white"
+                  p={4}
+                  paddingLeft="0px"
+                  paddingRight={"0px"}
+                  color="black"
+                >
+                  {/* <AspectRatio maxW="100%" height={"500px"} ratio={1}>
                     <iframe
                       title="naruto"
                       src="https://www.youtube.com/embed/QhBnZ6NPOY0"
                       allowFullScreen
                     />
-                  </AspectRatio>
+                  </AspectRatio> */}
+                  <ReactJWPlayer
+                    licenseKey="64HPbvSQorQcd52B8XFuhMtEoitbvY/EXJmMBfKcXZQU2Rnn"
+                    customProps={{
+                      playbackRateControls: true,
+                      autostart: false,
+                    }}
+                    file={
+                      "https://ipfs-3speak.b-cdn.net/ipfs/QmWoqdoLtsF4obB5sfSUc3GEZGY87TmcJrt6JpH8bJqsuK/manifest.m3u8"
+                    }
+                    image={
+                      "https://ipfs-3speak.b-cdn.net/ipfs/bafybeibqxbf652lmfbdf7zoht3pbhkx4m76agdwn5mnw33vjhlxrzvccoe/"
+                    }
+                    id="botr_UVQWMA4o_kGWxh33Q_div"
+                    playerId={"1242424242"}
+                    playerScript="https://cdn.jwplayer.com/libraries/HT7Dts3H.js"
+                  ></ReactJWPlayer>
                   <Box>
                     <Flex flexDirection={"column"}>
                       <Box>
@@ -56,38 +98,158 @@ export default function Watch() {
                           fontWeight={"500"}
                           textTransform="initial"
                           marginTop={"0.5rem"}
-                          marginBottom={"0.5rem"}
                           lineHeight={"38px"}
                         >
                           (Esp/Eng) ¡Mis Tres hábitos para un día feliz!
                         </Text>
+                        <Text
+                          display={"flex"}
+                          flexWrap="wrap"
+                          flexDirection={"row"}
+                          marginBottom={"0.5rem"}
+                        >
+                          <Text padding={"0.125rem"}>
+                            <Link
+                              background={"#ccc none repeat scroll 0 0"}
+                              borderRadius="2px"
+                              display={"inline-block"}
+                              padding="4px 9px"
+                              color={"#fff"}
+                            >
+                              online hotel booking management system
+                            </Link>
+                          </Text>
+                          <Text padding={"0.125rem"}>
+                            <Link
+                              background={"#ccc none repeat scroll 0 0"}
+                              borderRadius="2px"
+                              display={"inline-block"}
+                              padding="4px 9px"
+                              color={"#fff"}
+                            >
+                              system
+                            </Link>
+                          </Text>
+                          <Text padding={"0.125rem"}>
+                            <Link
+                              background={"#ccc none repeat scroll 0 0"}
+                              borderRadius="2px"
+                              display={"inline-block"}
+                              padding="4px 9px"
+                              color={"#fff"}
+                            >
+                              3speak speaking
+                            </Link>
+                          </Text>
+                          
+                          
+                        </Text>
                         <Text>
-                          <span>38</span>
+                          <ViewIcon fontSize={"20px"} />
+                          <span className="ms-1">38</span>
                           <span className="ms-4">Humanitas</span>
                         </Text>
                       </Box>
-                      <Flex justifyContent={"end"} marginTop="1rem">
-                        <Box>
-                          <Flex>
-                            <Button colorScheme="gray">
-                              OPEN IN THE DESKTOP APP
-                            </Button>
-                            <Button marginLeft={"10px"} colorScheme="gray">
-                              <AddIcon marginRight={"10px"} /> ADD TO PLAYLIST
-                            </Button>
+                      <Flex
+                        justifyContent={"end"}
+                        marginTop="1rem"
+                        paddingRight={"50px"}
+                      >
+                        <Flex justifyContent={"center"}>
+                          <Flex
+                            justifyContent={"center"}
+                            alignItems="center"
+                            className="mr-4"
+                          >
+                            <FaRegThumbsUp />
+                            <Text fontWeight={"bolder"} marginLeft={"10px"}>
+                              123
+                            </Text>
                           </Flex>
-                          <Flex className="mt-4" justifyContent={"end"}>
-                            <Button marginLeft={"10px"} colorScheme="gray">
-                              <ChevronDownIcon /> DONATE CRYPTO
-                            </Button>
+                          <Flex
+                            justifyContent={"center"}
+                            alignItems="center"
+                            marginLeft={"25px"}
+                          >
+                            <FaRegThumbsDown />
+                            <Text fontWeight={"bolder"} marginLeft={"10px"}>
+                              10
+                            </Text>
                           </Flex>
-                          <Flex className="mt-4" justifyContent={"end"}>
-                            <Button marginLeft={"10px"} colorScheme="gray">
-                              <ChevronDownIcon />
-                              SETTINGS
-                            </Button>
-                          </Flex>
-                        </Box>
+                        </Flex>
+                      </Flex>
+                      <Flex
+                        justifyContent={"end"}
+                        marginTop="1rem"
+                        paddingRight={"50px"}
+                      >
+                        <Flex justifyContent={"center"}>
+                          {/* <Flex> */}
+                          <Button
+                            marginRight={"10px"}
+                            textTransform="uppercase"
+                            border={"none"}
+                            boxShadow="0 1px 4px rgb(0 0 0 / 40%)"
+                            transition={"all 0.4s"}
+                            fontSize="0.7109375rem"
+                            lineHeight={"1.5"}
+                            background="#fff linear-gradient(180deg, white, #fff) repeat-x"
+                            fontWeight={"400"}
+                            color={"#212121"}
+                          >
+                            OPEN IN THE DESKTOP APP
+                          </Button>
+
+                          {/* </Flex> */}
+
+                          <Menu>
+                            <MenuButton
+                              textTransform="uppercase"
+                              border={"none"}
+                              boxShadow="0 1px 4px rgb(0 0 0 / 40%)"
+                              transition={"all 0.4s"}
+                              fontSize="0.7109375rem"
+                              lineHeight={"1.5"}
+                              background="#fff linear-gradient(180deg, white, #fff) repeat-x"
+                              fontWeight={"400"}
+                              color={"#212121"}
+                              as={Button}
+                              leftIcon={<ChevronDownIcon />}
+                            >
+                              ...
+                            </MenuButton>
+                            <MenuList>
+                              <MenuItem
+                                marginRight={"10px"}
+                                textTransform="uppercase"
+                                border={"none"}
+                                boxShadow="0 1px 4px rgb(0 0 0 / 40%)"
+                                transition={"all 0.4s"}
+                                fontSize="0.7109375rem"
+                                lineHeight={"1.5"}
+                                background="#fff linear-gradient(180deg, white, #fff) repeat-x"
+                                fontWeight={"400"}
+                                color={"#212121"}
+                              >
+                                <AddIcon marginRight={"10px"} /> ADD TO PLAYLIST
+                              </MenuItem>
+                              <MenuItem
+                                marginRight={"10px"}
+                                textTransform="uppercase"
+                                border={"none"}
+                                boxShadow="0 1px 4px rgb(0 0 0 / 40%)"
+                                transition={"all 0.4s"}
+                                fontSize="0.7109375rem"
+                                lineHeight={"1.5"}
+                                background="#fff linear-gradient(180deg, white, #fff) repeat-x"
+                                fontWeight={"400"}
+                                color={"#212121"}
+                              >
+                                <WarningTwoIcon marginRight={"10px"} /> REPORT
+                              </MenuItem>
+                            </MenuList>
+                          </Menu>
+                        </Flex>
                       </Flex>
                     </Flex>
                   </Box>
@@ -102,7 +264,7 @@ export default function Watch() {
                 bg="white"
               >
                 <Flex justifyContent={"space-between"}>
-                  <Box m={5} bg="white" p={4} color="black">
+                  <Box bg="white" p={4} color="black">
                     <Flex alignItems={"center"}>
                       <Avatar
                         name="Dan Abrahmov"
@@ -110,18 +272,40 @@ export default function Watch() {
                       />
                       <Flex flexDirection={"column"} className="ms-4">
                         <Link fontWeight={"bolder"}>stellamartinez</Link>
-                        <Text fontSize={"80%"} fontWeight="400">
-                          stellamartinez
-                        </Text>
                       </Flex>
                     </Flex>
                   </Box>
-                  <Box m={5} bg="white" p={4} color="black">
-                    <Button marginLeft={"10px"} colorScheme="gray">
+                  <Flex alignItems={"center"} bg="white" p={4} color="black">
+                    <Button
+                      marginRight={"10px"}
+                      textTransform="uppercase"
+                      border={"none"}
+                      boxShadow="0 1px 4px rgb(0 0 0 / 40%)"
+                      transition={"all 0.4s"}
+                      fontSize="0.7109375rem"
+                      lineHeight={"1.5"}
+                      background="#fff linear-gradient(180deg, white, #fff) repeat-x"
+                      fontWeight={"400"}
+                      color={"#212121"}
+                    >
                       FOLLOW 47
                     </Button>
+                    <Button
+                      marginRight={"10px"}
+                      textTransform="uppercase"
+                      border={"none"}
+                      boxShadow="0 1px 4px rgb(0 0 0 / 40%)"
+                      transition={"all 0.4s"}
+                      fontSize="0.7109375rem"
+                      lineHeight={"1.5"}
+                      background="#fff linear-gradient(180deg, white, #fff) repeat-x"
+                      fontWeight={"400"}
+                      color={"#212121"}
+                    >
+                      <ChevronDownIcon /> DONATE CRYPTO
+                    </Button>
                     <Button colorScheme="red">Buzz</Button>
-                  </Box>
+                  </Flex>
                 </Flex>
               </Box>
 
@@ -134,9 +318,17 @@ export default function Watch() {
                   transitionDuration={"0.4s"}
                   background="#fff none repeat scroll 0 0"
                 >
-                  <Text color={"black"} fontSize={"15px"} fontWeight="600">
-                    About:
+                  <Text
+                    marginBottom={"20px"}
+                    color={"black"}
+                    fontSize={"15px"}
+                    fontWeight="600"
+                  >
+                    Published on Dec 25, 2022
                   </Text>
+                  {/* <Text color={"black"} fontSize={"15px"} fontWeight="600">
+                    About:
+                  </Text> */}
                   <Box
                     maxHeight={showLess ? "200px" : "initial"}
                     overflow="hidden"
@@ -287,7 +479,77 @@ export default function Watch() {
                         </a>
                       </Text>
                     </span>
+                    <Text
+                      marginTop={"18px"}
+                      color={"black"}
+                      fontSize="15px"
+                      fontWeight={"600"}
+                    >
+                      Tags:
+                    </Text>
+                    <Text
+                      display={"flex"}
+                      flexWrap="wrap"
+                      flexDirection={"row"}
+                    >
+                      <Text padding={"0.125rem"}>
+                        <Link
+                          background={"#ccc none repeat scroll 0 0"}
+                          borderRadius="2px"
+                          display={"inline-block"}
+                          padding="4px 9px"
+                          color={"#fff"}
+                        >
+                          online hotel booking management system
+                        </Link>
+                      </Text>
+                      <Text padding={"0.125rem"}>
+                        <Link
+                          background={"#ccc none repeat scroll 0 0"}
+                          borderRadius="2px"
+                          display={"inline-block"}
+                          padding="4px 9px"
+                          color={"#fff"}
+                        >
+                          system
+                        </Link>
+                      </Text>
+                      <Text padding={"0.125rem"}>
+                        <Link
+                          background={"#ccc none repeat scroll 0 0"}
+                          borderRadius="2px"
+                          display={"inline-block"}
+                          padding="4px 9px"
+                          color={"#fff"}
+                        >
+                          3speak speaking
+                        </Link>
+                      </Text>
+                      <Text padding={"0.125rem"}>
+                        <Link
+                          background={"#ccc none repeat scroll 0 0"}
+                          borderRadius="2px"
+                          display={"inline-block"}
+                          padding="4px 9px"
+                          color={"#fff"}
+                        >
+                          tag a team
+                        </Link>
+                      </Text>
+                      <Text padding={"0.125rem"}>
+                        <Link
+                          background={"#ccc none repeat scroll 0 0"}
+                          borderRadius="2px"
+                          display={"inline-block"}
+                          padding="4px 9px"
+                          color={"#fff"}
+                        >
+                          this is a test show
+                        </Link>
+                      </Text>
+                    </Text>
                   </Box>
+
                   <Box
                     onClick={() => showLessFunction()}
                     borderTop={"1px solid rgba(0,0,0,0.2)"}
@@ -297,66 +559,6 @@ export default function Watch() {
                       {showLess ? "Show more" : "Show less"}
                     </Text>
                   </Box>
-                  <Text color={"black"} fontSize="15px" fontWeight={"600"}>
-                    Tags:
-                  </Text>
-                  <Text display={"flex"} flexWrap="wrap" flexDirection={"row"}>
-                    <Text padding={"0.125rem"}>
-                      <Link
-                        background={"#ccc none repeat scroll 0 0"}
-                        borderRadius="2px"
-                        display={"inline-block"}
-                        padding="4px 9px"
-                        color={"#fff"}
-                      >
-                        online hotel booking management system
-                      </Link>
-                    </Text>
-                    <Text padding={"0.125rem"}>
-                      <Link
-                        background={"#ccc none repeat scroll 0 0"}
-                        borderRadius="2px"
-                        display={"inline-block"}
-                        padding="4px 9px"
-                        color={"#fff"}
-                      >
-                        system
-                      </Link>
-                    </Text>
-                    <Text padding={"0.125rem"}>
-                      <Link
-                        background={"#ccc none repeat scroll 0 0"}
-                        borderRadius="2px"
-                        display={"inline-block"}
-                        padding="4px 9px"
-                        color={"#fff"}
-                      >
-                        3speak speaking
-                      </Link>
-                    </Text>
-                    <Text padding={"0.125rem"}>
-                      <Link
-                        background={"#ccc none repeat scroll 0 0"}
-                        borderRadius="2px"
-                        display={"inline-block"}
-                        padding="4px 9px"
-                        color={"#fff"}
-                      >
-                        tag a team
-                      </Link>
-                    </Text>
-                    <Text padding={"0.125rem"}>
-                      <Link
-                        background={"#ccc none repeat scroll 0 0"}
-                        borderRadius="2px"
-                        display={"inline-block"}
-                        padding="4px 9px"
-                        color={"#fff"}
-                      >
-                        this is a test show
-                      </Link>
-                    </Text>
-                  </Text>
                 </Box>
               </Box>
               <Box>

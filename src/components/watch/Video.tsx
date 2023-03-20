@@ -11,8 +11,23 @@ const Video = ({ videoSrc }: any) => {
         bg="white.500"
         color={"black"}
         marginRight="6px"
+        position={"relative"}
       >
+        <Box
+          position={"absolute"}
+          bottom="5px"
+          color={"#000"}
+          fontSize="11px"
+          fontWeight={"500"}
+          right="5px"
+          background={"none 0px 0px repeat scroll rgb(232, 232, 232)"}
+          borderRadius="2px"
+          padding={"0px 6px"}
+        >
+          01:19
+        </Box>
         <Image
+          borderRadius={"8px"}
           objectFit="cover"
           width="100%"
           height="inherit"

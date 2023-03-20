@@ -44,6 +44,7 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "18.1.0",
     "react-google-recaptcha": "^2.1.0",
+    "react-icons": "^4.8.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-jw-player": "^1.19.1",
     "react-markdown": "^8.0.3",
