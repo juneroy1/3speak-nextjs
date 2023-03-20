@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <StyledGrid>
         <Box>{!isAuth && <Sidebar />}</Box>
-        <Box backgroundColor="#fafafa">
+        <Box width={"100%"} backgroundColor="#EFF4F6">
           <ChakraProvider>
             <Component {...pageProps} />
           </ChakraProvider>
@@ -33,11 +33,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 const StyledGrid = styled(Box)`
-  display: grid;
+  display: flex;
   grid-template-columns: 0.5fr 3fr;
   grid-template-rows: 1fr;
   width: 100%;
-  min-height: 100vh;
 `;
 
 export default MyApp;
