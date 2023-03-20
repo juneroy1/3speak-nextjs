@@ -44,10 +44,10 @@ export default function Watch() {
                   <Box>
                     {/* title */}
                     <Title />
-                    {/* tags */}
-                    <Tags />
                     {/* views */}
                     <Views />
+                    {/* tags */}
+                    <Tags />
                   </Box>
                   <Flex
                     justifyContent={"end"}
