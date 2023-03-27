@@ -1,6 +1,8 @@
 import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
+import MenuButtons from "./MenuButtons";
+import Views from "./Views";
 
 const Reactions = () => {
   return (
@@ -16,6 +18,14 @@ const Reactions = () => {
         <Text fontWeight={"bolder"} marginLeft={"10px"}>
           10
         </Text>
+      </Flex>
+      <Flex justifyContent={"center"} alignItems="center" marginLeft={"25px"}>
+        {/* views */}
+        <Views />
+      </Flex>
+      <Flex justifyContent={"center"} alignItems="center" marginLeft={"5px"}>
+        {/* views */}
+        <MenuButtons />
       </Flex>
     </Flex>
   );

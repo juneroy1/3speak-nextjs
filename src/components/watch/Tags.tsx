@@ -9,35 +9,19 @@ const Tags = () => {
       flexDirection={"row"}
       marginBottom={"0.5rem"}
     >
-      <Text padding={"0.125rem"} paddingLeft={"0px"}>
-        <Link
-          href="#"
-          color={"blue"}
-          display={"inline-block"}
-          padding="4px 9px"
-          paddingLeft={"0px"}
-        >
-          #online hotel booking management system
+      <Text>
+        <Link href="#" color={"blue"} display={"inline-block"}>
+          #onlinehotelbookingmanagementsystem&nbsp;
         </Link>
       </Text>
-      <Text padding={"0.125rem"}>
-        <Link
-          href="#"
-          color={"blue"}
-          display={"inline-block"}
-          padding="4px 9px"
-        >
-          #system
+      <Text>
+        <Link href="#" color={"blue"} display={"inline-block"}>
+          #system&nbsp;
         </Link>
       </Text>
-      <Text padding={"0.125rem"}>
-        <Link
-          href="#"
-          color={"blue"}
-          display={"inline-block"}
-          padding="4px 9px"
-        >
-          #3speak speaking
+      <Text>
+        <Link href="#" color={"blue"} display={"inline-block"}>
+          #3speakspeaking
         </Link>
       </Text>
     </Text>

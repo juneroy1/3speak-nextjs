@@ -23,6 +23,7 @@ import Views from "@/components/watch/Views";
 import Tags from "@/components/watch/Tags";
 import Title from "@/components/watch/Title";
 import VideoPlayer from "@/components/watch/VideoPlayer";
+import Community from "@/components/watch/Community";
 
 export default function Watch() {
   return (
@@ -44,27 +45,21 @@ export default function Watch() {
                   <Box>
                     {/* title */}
                     <Title />
-                    {/* views */}
-                    <Views />
+
                     {/* tags */}
                     <Tags />
                   </Box>
-                  <Flex
-                    justifyContent={"end"}
-                    marginTop="1rem"
-                    paddingRight={"50px"}
-                  >
+                  <Flex justifyContent={"end"} marginTop="1rem">
                     {/* reactions */}
                     <Reactions />
                   </Flex>
-                  <Flex
+                  {/* <Flex
                     justifyContent={"end"}
                     marginTop="1rem"
                     paddingRight={"50px"}
                   >
-                    {/* menu buttons */}
-                    <MenuButtons />
-                  </Flex>
+                   
+                  </Flex> */}
                 </Flex>
               </Box>
             </Box>
@@ -80,6 +75,17 @@ export default function Watch() {
             <Profile />
           </Box>
 
+          <Box
+            marginBottom={"30px"}
+            borderRadius={4}
+            boxShadow="base"
+            mr={2}
+            flex="1"
+            bg="white"
+          >
+            <Community />
+          </Box>
+
           <Box borderRadius={4} boxShadow="base" mr={2} flex="1" bg="white">
             {/* published or about components */}
             <About />
@@ -90,7 +96,7 @@ export default function Watch() {
           </Box>
         </Box>
 
-        <Box w="33%" bg="white.500" color={"black"}>
+        <Box w="33%" bg="white.500" color={"black"} marginTop="15px">
           <Grid templateColumns="repeat(1, 1fr)" gap={2}>
             <GridItem
               marginTop={"1px !important"}
@@ -99,9 +105,10 @@ export default function Watch() {
               h="10"
               bg="white.600"
             >
-              <Text marginTop={"1px"} fontSize={"2xl"} fontWeight={"bold"}>
+              {/* <Text marginTop={"1px"} fontSize={"2xl"} fontWeight={"bold"}>
                 More from Juneroy quin
-              </Text>
+              </Text> */}
+
               <Video videoSrc="https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfKKVdjVcJpKJDN8sx7ZjXNkfrVDtAkjdi59a6bGJtSa9MJdsqxYnqALaV6iRcMCMd5TL4RfZMhnbb6e?format=jpeg&mode=cover&width=340&height=191" />
               <Video videoSrc="https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfKKVdjVim5xXXBHudVXW7uT6ErgMsQHTXm2ELwa6JxMMvR1j9aYic2jgGRz4wcXHkeUnAJM5CWiwria?format=jpeg&mode=cover&width=340&height=191" />
               <Video videoSrc="https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfKKVdjVhcN63NCz569HVsSov72VRbsEsSxSrf7JQJBhpsDNxyNfNKrnmLNvLJCfNaX26VjPcZpap3f4?format=jpeg&mode=cover&width=340&height=191" />

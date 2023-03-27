@@ -7,7 +7,6 @@ const Views = () => {
     <Text>
       <ViewIcon fontSize={"20px"} />
       <span className="ms-1">38</span>
-      <span className="ms-4">Humanitas</span>
     </Text>
   );
 };

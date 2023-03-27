@@ -16,7 +16,7 @@ const About = () => {
       background="#fff none repeat scroll 0 0"
     >
       <Text
-        marginBottom={"20px"}
+        marginBottom={"5px"}
         color={"black"}
         fontSize={"15px"}
         fontWeight="600"
@@ -159,59 +159,29 @@ const About = () => {
           Tags:
         </Text>
         <Text display={"flex"} flexWrap="wrap" flexDirection={"row"}>
-          <Text padding={"0.125rem"}>
-            <Link
-              background={"#ccc none repeat scroll 0 0"}
-              borderRadius="2px"
-              display={"inline-block"}
-              padding="4px 9px"
-              color={"#fff"}
-            >
-              online hotel booking management system
+          <Text>
+            <Link href="#" color={"blue"} display={"inline-block"}>
+              #onlinehotelbookingmanagementsystem&nbsp;
             </Link>
           </Text>
-          <Text padding={"0.125rem"}>
-            <Link
-              background={"#ccc none repeat scroll 0 0"}
-              borderRadius="2px"
-              display={"inline-block"}
-              padding="4px 9px"
-              color={"#fff"}
-            >
-              system
+          <Text>
+            <Link href="#" color={"blue"} display={"inline-block"}>
+              #system&nbsp;
             </Link>
           </Text>
-          <Text padding={"0.125rem"}>
-            <Link
-              background={"#ccc none repeat scroll 0 0"}
-              borderRadius="2px"
-              display={"inline-block"}
-              padding="4px 9px"
-              color={"#fff"}
-            >
-              3speak speaking
+          <Text>
+            <Link href="#" color={"blue"} display={"inline-block"}>
+              #3speakspeaking&nbsp;
             </Link>
           </Text>
-          <Text padding={"0.125rem"}>
-            <Link
-              background={"#ccc none repeat scroll 0 0"}
-              borderRadius="2px"
-              display={"inline-block"}
-              padding="4px 9px"
-              color={"#fff"}
-            >
-              tag a team
+          <Text>
+            <Link href="#" color={"blue"} display={"inline-block"}>
+              #tagateam&nbsp;
             </Link>
           </Text>
-          <Text padding={"0.125rem"}>
-            <Link
-              background={"#ccc none repeat scroll 0 0"}
-              borderRadius="2px"
-              display={"inline-block"}
-              padding="4px 9px"
-              color={"#fff"}
-            >
-              this is a test show
+          <Text>
+            <Link href="#" color={"blue"} display={"inline-block"}>
+              #thisisatestshow&nbsp;
             </Link>
           </Text>
         </Text>

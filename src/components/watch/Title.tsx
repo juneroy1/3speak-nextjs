@@ -4,7 +4,7 @@ import React from "react";
 const Title = () => {
   return (
     <Text
-      fontSize={"18px"}
+      fontSize={"20px"}
       color="#333"
       fontWeight={"500"}
       textTransform="initial"
