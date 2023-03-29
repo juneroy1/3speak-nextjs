@@ -1,7 +1,11 @@
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
-import { Avatar, Box, Button, Link, Text } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, Link, Text } from "@chakra-ui/react";
 import React from "react";
-
+import {
+  FaCommentAlt,
+  FaThumbsUp,
+  FaThumbsDown,
+  FaShare,
+} from "react-icons/fa";
 const Comment = () => {
   return (
     <Box>
@@ -55,7 +59,12 @@ const Comment = () => {
         fontWeight={"500"}
         lineHeight="1.2"
       >
-        Comments:
+        <Flex>
+          <FaCommentAlt fontSize={"15px"} />{" "}
+          <Text fontSize={"15px"} marginLeft={"5px"}>
+            Comments:
+          </Text>
+        </Flex>
       </Text>
       <Box
         background="#fff none repeat scroll 0 0"
@@ -100,7 +109,7 @@ const Comment = () => {
                   height={"calc(100% - 50px)"}
                   borderLeft="4px solid transparent"
                   borderRight={"4px solid transparent"}
-                  backgroundColor="rgb(221 21 51 / 70%)"
+                  backgroundColor="#edeff1"
                   backgroundClip={"padding-box"}
                 ></Box>
                 <Box alignSelf={"flex-start"}>
@@ -119,7 +128,7 @@ const Comment = () => {
                   maxWidth={"800px"}
                   width="calc(100% - 56px)"
                   padding={"0 20px"}
-                  paddingLeft="10px"
+                  paddingLeft="0px"
                   alignSelf="flex-start"
                 >
                   {/* div for title */}
@@ -177,25 +186,41 @@ const Comment = () => {
                       display="flex"
                       flexDirection={"row"}
                     >
-                      <Button color={"black"} variant="outline">
-                        <ChevronUpIcon />
-                      </Button>
-                      <Text
-                        color={"#1A1A1B"}
-                        margin="4px"
-                        width={"auto"}
-                        lineHeight="15px"
-                        textAlign={"center"}
-                        fontSize="12px"
-                        fontWeight={"700"}
-                        pointerEvents="none"
-                        wordBreak={"normal"}
+                      <Box marginRight={"5px"}>
+                        <Flex
+                          marginLeft={"5px"}
+                          justifyContent={"center"}
+                          alignItems="center"
+                          color={"black"}
+                        >
+                          <FaThumbsUp />
+
+                          <Text
+                            color={"#1A1A1B"}
+                            margin="4px"
+                            marginBottom={"0px"}
+                            width={"auto"}
+                            lineHeight="15px"
+                            textAlign={"center"}
+                            fontSize="12px"
+                            fontWeight={"700"}
+                            pointerEvents="none"
+                            wordBreak={"normal"}
+                          >
+                            1000
+                          </Text>
+                        </Flex>
+                      </Box>
+
+                      <Flex
+                        marginLeft={"5px"}
+                        justifyContent={"center"}
+                        alignItems="center"
+                        color={"black"}
                       >
-                        1000
-                      </Text>
-                      <Button color={"black"} variant="outline">
-                        <ChevronDownIcon />
-                      </Button>
+                        <FaThumbsDown />{" "}
+                        <Text marginLeft={"5px"}> Dislike</Text>
+                      </Flex>
                     </Box>
 
                     <Box
@@ -207,15 +232,29 @@ const Comment = () => {
                       fontWeight={"700"}
                       lineHeight="16px"
                     >
-                      <Button color={"black"} variant="outline">
+                      {/* <Button color={"black"} variant="outline">
                         Reply
-                      </Button>
-                      <Button color={"black"} variant="outline">
-                        Share
-                      </Button>
-                      <Button color={"black"} variant="outline">
+                      </Button> */}
+                      <Text color={"black"} marginLeft={"5px"}>
+                        <Flex justifyContent={"center"} alignItems="center">
+                          <FaCommentAlt />{" "}
+                          <Text marginLeft={"3px"}>Comments</Text>
+                        </Flex>
+                      </Text>
+                      {/* <Flex>
+                        <FaCommentAlt  />{" "}
+                        <Text color={'black'} >
+                          Comments
+                        </Text>
+                      </Flex> */}
+                      <Text color={"black"} marginLeft={"10px"}>
+                        <Flex justifyContent={"center"} alignItems="center">
+                          <FaShare /> <Text marginLeft={"3px"}>Share</Text>
+                        </Flex>
+                      </Text>
+                      {/* <Button color={"black"} variant="outline">
                         ...
-                      </Button>
+                      </Button> */}
                     </Box>
                   </Box>
 
@@ -240,7 +279,7 @@ const Comment = () => {
                         height={"calc(100% - 50px)"}
                         borderLeft="4px solid transparent"
                         borderRight={"4px solid transparent"}
-                        backgroundColor="rgb(221 21 51 / 70%)"
+                        backgroundColor="#edeff1"
                         backgroundClip={"padding-box"}
                       ></Box>
                       <Box alignSelf={"flex-start"}>
@@ -262,7 +301,7 @@ const Comment = () => {
                         maxWidth={"800px"}
                         width="calc(100% - 56px)"
                         padding={"0 20px"}
-                        paddingLeft="10px"
+                        paddingLeft="0px"
                         alignSelf="flex-start"
                       >
                         {/* div for title */}
@@ -322,25 +361,40 @@ const Comment = () => {
                             display="flex"
                             flexDirection={"row"}
                           >
-                            <Button color={"black"} variant="outline">
-                              <ChevronUpIcon />
-                            </Button>
-                            <Text
-                              color={"#1A1A1B"}
-                              margin="4px"
-                              width={"auto"}
-                              lineHeight="15px"
-                              textAlign={"center"}
-                              fontSize="12px"
-                              fontWeight={"700"}
-                              pointerEvents="none"
-                              wordBreak={"normal"}
+                            <Box marginRight={"5px"}>
+                              <Flex
+                                marginLeft={"5px"}
+                                justifyContent={"center"}
+                                alignItems="center"
+                                color={"black"}
+                              >
+                                <FaThumbsUp />
+
+                                <Text
+                                  color={"#1A1A1B"}
+                                  margin="4px"
+                                  marginBottom={"0px"}
+                                  width={"auto"}
+                                  lineHeight="15px"
+                                  textAlign={"center"}
+                                  fontSize="12px"
+                                  fontWeight={"700"}
+                                  pointerEvents="none"
+                                  wordBreak={"normal"}
+                                >
+                                  1000
+                                </Text>
+                              </Flex>
+                            </Box>
+                            <Flex
+                              marginLeft={"5px"}
+                              justifyContent={"center"}
+                              alignItems="center"
+                              color={"black"}
                             >
-                              1000
-                            </Text>
-                            <Button color={"black"} variant="outline">
-                              <ChevronDownIcon />
-                            </Button>
+                              <FaThumbsDown />{" "}
+                              <Text marginLeft={"5px"}> Dislike</Text>
+                            </Flex>
                           </Box>
 
                           <Box
@@ -352,15 +406,36 @@ const Comment = () => {
                             fontWeight={"700"}
                             lineHeight="16px"
                           >
-                            <Button color={"black"} variant="outline">
-                              Reply
-                            </Button>
-                            <Button color={"black"} variant="outline">
-                              Share
-                            </Button>
-                            <Button color={"black"} variant="outline">
-                              ...
-                            </Button>
+                            {/* <Button color={"black"} variant="outline">
+                        Reply
+                      </Button> */}
+                            <Text color={"black"} marginLeft={"5px"}>
+                              <Flex
+                                justifyContent={"center"}
+                                alignItems="center"
+                              >
+                                <FaCommentAlt />{" "}
+                                <Text marginLeft={"3px"}>Comments</Text>
+                              </Flex>
+                            </Text>
+                            {/* <Flex>
+                        <FaCommentAlt  />{" "}
+                        <Text color={'black'} >
+                          Comments
+                        </Text>
+                      </Flex> */}
+                            <Text color={"black"} marginLeft={"10px"}>
+                              <Flex
+                                justifyContent={"center"}
+                                alignItems="center"
+                              >
+                                <FaShare />{" "}
+                                <Text marginLeft={"3px"}>Share</Text>
+                              </Flex>
+                            </Text>
+                            {/* <Button color={"black"} variant="outline">
+                        ...
+                      </Button> */}
                           </Box>
                         </Box>
                       </Box>
@@ -400,7 +475,7 @@ const Comment = () => {
                   height={"calc(100% - 50px)"}
                   borderLeft="4px solid transparent"
                   borderRight={"4px solid transparent"}
-                  backgroundColor="rgb(221 21 51 / 70%)"
+                  backgroundColor="#edeff1"
                   backgroundClip={"padding-box"}
                 ></Box>
                 <Box alignSelf={"flex-start"}>
@@ -419,7 +494,7 @@ const Comment = () => {
                   maxWidth={"800px"}
                   width="calc(100% - 56px)"
                   padding={"0 20px"}
-                  paddingLeft="10px"
+                  paddingLeft="0px"
                   alignSelf="flex-start"
                 >
                   {/* div for title */}
@@ -477,25 +552,40 @@ const Comment = () => {
                       display="flex"
                       flexDirection={"row"}
                     >
-                      <Button color={"black"} variant="outline">
-                        <ChevronUpIcon />
-                      </Button>
-                      <Text
-                        color={"#1A1A1B"}
-                        margin="4px"
-                        width={"auto"}
-                        lineHeight="15px"
-                        textAlign={"center"}
-                        fontSize="12px"
-                        fontWeight={"700"}
-                        pointerEvents="none"
-                        wordBreak={"normal"}
+                      <Box marginRight={"5px"}>
+                        <Flex
+                          marginLeft={"5px"}
+                          justifyContent={"center"}
+                          alignItems="center"
+                          color={"black"}
+                        >
+                          <FaThumbsUp />
+
+                          <Text
+                            color={"#1A1A1B"}
+                            margin="4px"
+                            marginBottom={"0px"}
+                            width={"auto"}
+                            lineHeight="15px"
+                            textAlign={"center"}
+                            fontSize="12px"
+                            fontWeight={"700"}
+                            pointerEvents="none"
+                            wordBreak={"normal"}
+                          >
+                            1000
+                          </Text>
+                        </Flex>
+                      </Box>
+                      <Flex
+                        marginLeft={"5px"}
+                        justifyContent={"center"}
+                        alignItems="center"
+                        color={"black"}
                       >
-                        1000
-                      </Text>
-                      <Button color={"black"} variant="outline">
-                        <ChevronDownIcon />
-                      </Button>
+                        <FaThumbsDown />{" "}
+                        <Text marginLeft={"5px"}> Dislike</Text>
+                      </Flex>
                     </Box>
 
                     <Box
@@ -507,15 +597,29 @@ const Comment = () => {
                       fontWeight={"700"}
                       lineHeight="16px"
                     >
-                      <Button color={"black"} variant="outline">
+                      {/* <Button color={"black"} variant="outline">
                         Reply
-                      </Button>
-                      <Button color={"black"} variant="outline">
-                        Share
-                      </Button>
-                      <Button color={"black"} variant="outline">
+                      </Button> */}
+                      <Text color={"black"} marginLeft={"5px"}>
+                        <Flex justifyContent={"center"} alignItems="center">
+                          <FaCommentAlt />{" "}
+                          <Text marginLeft={"3px"}>Comments</Text>
+                        </Flex>
+                      </Text>
+                      {/* <Flex>
+                        <FaCommentAlt  />{" "}
+                        <Text color={'black'} >
+                          Comments
+                        </Text>
+                      </Flex> */}
+                      <Text color={"black"} marginLeft={"10px"}>
+                        <Flex justifyContent={"center"} alignItems="center">
+                          <FaShare /> <Text marginLeft={"3px"}>Share</Text>
+                        </Flex>
+                      </Text>
+                      {/* <Button color={"black"} variant="outline">
                         ...
-                      </Button>
+                      </Button> */}
                     </Box>
                   </Box>
 
@@ -540,7 +644,7 @@ const Comment = () => {
                         height={"calc(100% - 50px)"}
                         borderLeft="4px solid transparent"
                         borderRight={"4px solid transparent"}
-                        backgroundColor="rgb(221 21 51 / 70%)"
+                        backgroundColor="#edeff1"
                         backgroundClip={"padding-box"}
                       ></Box>
                       <Box alignSelf={"flex-start"}>
@@ -562,7 +666,7 @@ const Comment = () => {
                         maxWidth={"800px"}
                         width="calc(100% - 56px)"
                         padding={"0 20px"}
-                        paddingLeft="10px"
+                        paddingLeft="0px"
                         alignSelf="flex-start"
                       >
                         {/* div for title */}
@@ -622,25 +726,40 @@ const Comment = () => {
                             display="flex"
                             flexDirection={"row"}
                           >
-                            <Button color={"black"} variant="outline">
-                              <ChevronUpIcon />
-                            </Button>
-                            <Text
-                              color={"#1A1A1B"}
-                              margin="4px"
-                              width={"auto"}
-                              lineHeight="15px"
-                              textAlign={"center"}
-                              fontSize="12px"
-                              fontWeight={"700"}
-                              pointerEvents="none"
-                              wordBreak={"normal"}
+                            <Box marginRight={"5px"}>
+                              <Flex
+                                marginLeft={"5px"}
+                                justifyContent={"center"}
+                                alignItems="center"
+                                color={"black"}
+                              >
+                                <FaThumbsUp />
+
+                                <Text
+                                  color={"#1A1A1B"}
+                                  margin="4px"
+                                  marginBottom={"0px"}
+                                  width={"auto"}
+                                  lineHeight="15px"
+                                  textAlign={"center"}
+                                  fontSize="12px"
+                                  fontWeight={"700"}
+                                  pointerEvents="none"
+                                  wordBreak={"normal"}
+                                >
+                                  1000
+                                </Text>
+                              </Flex>
+                            </Box>
+                            <Flex
+                              marginLeft={"5px"}
+                              justifyContent={"center"}
+                              alignItems="center"
+                              color={"black"}
                             >
-                              1000
-                            </Text>
-                            <Button color={"black"} variant="outline">
-                              <ChevronDownIcon />
-                            </Button>
+                              <FaThumbsDown />{" "}
+                              <Text marginLeft={"5px"}> Dislike</Text>
+                            </Flex>
                           </Box>
 
                           <Box
@@ -652,15 +771,36 @@ const Comment = () => {
                             fontWeight={"700"}
                             lineHeight="16px"
                           >
-                            <Button color={"black"} variant="outline">
-                              Reply
-                            </Button>
-                            <Button color={"black"} variant="outline">
-                              Share
-                            </Button>
-                            <Button color={"black"} variant="outline">
-                              ...
-                            </Button>
+                            {/* <Button color={"black"} variant="outline">
+                        Reply
+                      </Button> */}
+                            <Text color={"black"} marginLeft={"5px"}>
+                              <Flex
+                                justifyContent={"center"}
+                                alignItems="center"
+                              >
+                                <FaCommentAlt />{" "}
+                                <Text marginLeft={"3px"}>Comments</Text>
+                              </Flex>
+                            </Text>
+                            {/* <Flex>
+                        <FaCommentAlt  />{" "}
+                        <Text color={'black'} >
+                          Comments
+                        </Text>
+                      </Flex> */}
+                            <Text color={"black"} marginLeft={"10px"}>
+                              <Flex
+                                justifyContent={"center"}
+                                alignItems="center"
+                              >
+                                <FaShare />{" "}
+                                <Text marginLeft={"3px"}>Share</Text>
+                              </Flex>
+                            </Text>
+                            {/* <Button color={"black"} variant="outline">
+                        ...
+                      </Button> */}
                           </Box>
                         </Box>
                       </Box>
@@ -763,7 +903,7 @@ const Comment = () => {
                       flexDirection={"row"}
                     >
                       <Button color={"black"} variant="outline">
-                        <ChevronUpIcon />
+                        <FaThumbsUp />
                       </Button>
                       <Text
                         color={"#1A1A1B"}
@@ -779,7 +919,7 @@ const Comment = () => {
                         61
                       </Text>
                       <Button color={"black"} variant="outline">
-                        <ChevronDownIcon />
+                        <FaThumbsDown />
                       </Button>
                     </Box>
 

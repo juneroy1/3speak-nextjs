@@ -95,8 +95,8 @@ export default function Watch() {
             <Comment />
           </Box>
         </Box>
-
-        <Box w="33%" bg="white.500" color={"black"} marginTop="15px">
+        {/* borderRadius={4} boxShadow="base" mr={2} flex="1" bg="white" */}
+        <Box  w="33%" bg="white" color={"black"} marginTop="15px"  borderRadius={4} boxShadow="base" marginLeft={'10px'} paddingTop='10px'>
           <Grid templateColumns="repeat(1, 1fr)" gap={2}>
             <GridItem
               marginTop={"1px !important"}
