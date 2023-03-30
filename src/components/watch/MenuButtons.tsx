@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { FaEllipsisV } from "react-icons/fa";
 
 const MenuButtons = () => {
   return (
@@ -25,9 +26,13 @@ const MenuButtons = () => {
           color={"#212121"}
           as={Button}
         >
-          <Text fontSize={"15px"} fontWeight="bold">
-            <ChevronDownIcon />
-            ...
+          <Text
+            fontSize={"12px"}
+            display="flex"
+            justifyContent={"center"}
+            alignItems="center"
+          >
+            <FaEllipsisV />
           </Text>
         </MenuButton>
         <MenuList>

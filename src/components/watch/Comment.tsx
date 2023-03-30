@@ -1,12 +1,18 @@
-import { Avatar, Box, Button, Flex, Link, Text } from "@chakra-ui/react";
-import React from "react";
 import {
-  FaCommentAlt,
-  FaThumbsUp,
-  FaThumbsDown,
-  FaShare,
-} from "react-icons/fa";
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Link,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
+import { FaCommentAlt } from "react-icons/fa";
+import CommentFooter from "./CommentFooter";
 const Comment = () => {
+  const [comment, setComment] = useState("");
+
   return (
     <Box>
       <Box
@@ -25,7 +31,7 @@ const Comment = () => {
             paddingRight={"15px"}
             paddingLeft="15px"
           >
-            <Text
+            {/* <Text
               color={"#666"}
               fontSize="0.8125rem"
               marginBottom={"0.5rem"}
@@ -33,7 +39,7 @@ const Comment = () => {
               lineHeight={"1.2"}
             >
               Add Comment:
-            </Text>
+            </Text> */}
             <Text
               background={
                 "#9C27B0 linear-gradient(180deg, #ab47bc, #9C27B0) repeat-x"
@@ -48,6 +54,46 @@ const Comment = () => {
               To comment on this video please connect a HIVE account to your
               profile: <Link>Connect HIVE Account</Link>
             </Text>
+            <Box>
+              <Flex>
+                <Box alignSelf={"flex-start"} marginRight="20px">
+                  <Avatar
+                    name="Dan Abrahmov"
+                    src="https://bit.ly/dan-abramov"
+                  />
+                </Box>
+                <Box width={"100%"}>
+                  <Flex flexDirection={"column"}>
+                    <Textarea
+                      width={"100%"}
+                      color="black"
+                      placeholder="Add comment"
+                      onChange={(e) => setComment(e.target.value)}
+                    />
+                    <Flex
+                      marginTop={"10px"}
+                      justifyContent="end"
+                      alignItems={"center"}
+                    >
+                      <Button
+                        colorScheme="gray"
+                        color={"black"}
+                        marginRight={"10px"}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        disabled={true}
+                        color={comment ? "white" : "black"}
+                        colorScheme={comment ? "messenger" : "gray"}
+                      >
+                        Comment
+                      </Button>
+                    </Flex>
+                  </Flex>
+                </Box>
+              </Flex>
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -174,89 +220,7 @@ const Comment = () => {
                   </Box>
 
                   {/* box for footer */}
-                  <Box
-                    display={"flex"}
-                    alignItems="center"
-                    flexFlow={"row nowrap"}
-                  >
-                    <Box
-                      margin={"3px 4px 4px -4px"}
-                      padding="0"
-                      alignItems={"center"}
-                      display="flex"
-                      flexDirection={"row"}
-                    >
-                      <Box marginRight={"5px"}>
-                        <Flex
-                          marginLeft={"5px"}
-                          justifyContent={"center"}
-                          alignItems="center"
-                          color={"black"}
-                        >
-                          <FaThumbsUp />
-
-                          <Text
-                            color={"#1A1A1B"}
-                            margin="4px"
-                            marginBottom={"0px"}
-                            width={"auto"}
-                            lineHeight="15px"
-                            textAlign={"center"}
-                            fontSize="12px"
-                            fontWeight={"700"}
-                            pointerEvents="none"
-                            wordBreak={"normal"}
-                          >
-                            1000
-                          </Text>
-                        </Flex>
-                      </Box>
-
-                      <Flex
-                        marginLeft={"5px"}
-                        justifyContent={"center"}
-                        alignItems="center"
-                        color={"black"}
-                      >
-                        <FaThumbsDown />{" "}
-                        <Text marginLeft={"5px"}> Dislike</Text>
-                      </Flex>
-                    </Box>
-
-                    <Box
-                      margin={"0px 0 0 5px"}
-                      alignItems={"center"}
-                      display="flex"
-                      flexDirection={"row"}
-                      fontSize="12px"
-                      fontWeight={"700"}
-                      lineHeight="16px"
-                    >
-                      {/* <Button color={"black"} variant="outline">
-                        Reply
-                      </Button> */}
-                      <Text color={"black"} marginLeft={"5px"}>
-                        <Flex justifyContent={"center"} alignItems="center">
-                          <FaCommentAlt />{" "}
-                          <Text marginLeft={"3px"}>Comments</Text>
-                        </Flex>
-                      </Text>
-                      {/* <Flex>
-                        <FaCommentAlt  />{" "}
-                        <Text color={'black'} >
-                          Comments
-                        </Text>
-                      </Flex> */}
-                      <Text color={"black"} marginLeft={"10px"}>
-                        <Flex justifyContent={"center"} alignItems="center">
-                          <FaShare /> <Text marginLeft={"3px"}>Share</Text>
-                        </Flex>
-                      </Text>
-                      {/* <Button color={"black"} variant="outline">
-                        ...
-                      </Button> */}
-                    </Box>
-                  </Box>
+                  <CommentFooter />
 
                   {/* reply */}
                   <Box marginLeft={"28px"}>
@@ -349,95 +313,7 @@ const Comment = () => {
                         </Box>
 
                         {/* box for footer */}
-                        <Box
-                          display={"flex"}
-                          alignItems="center"
-                          flexFlow={"row nowrap"}
-                        >
-                          <Box
-                            margin={"3px 4px 4px -4px"}
-                            padding="0"
-                            alignItems={"center"}
-                            display="flex"
-                            flexDirection={"row"}
-                          >
-                            <Box marginRight={"5px"}>
-                              <Flex
-                                marginLeft={"5px"}
-                                justifyContent={"center"}
-                                alignItems="center"
-                                color={"black"}
-                              >
-                                <FaThumbsUp />
-
-                                <Text
-                                  color={"#1A1A1B"}
-                                  margin="4px"
-                                  marginBottom={"0px"}
-                                  width={"auto"}
-                                  lineHeight="15px"
-                                  textAlign={"center"}
-                                  fontSize="12px"
-                                  fontWeight={"700"}
-                                  pointerEvents="none"
-                                  wordBreak={"normal"}
-                                >
-                                  1000
-                                </Text>
-                              </Flex>
-                            </Box>
-                            <Flex
-                              marginLeft={"5px"}
-                              justifyContent={"center"}
-                              alignItems="center"
-                              color={"black"}
-                            >
-                              <FaThumbsDown />{" "}
-                              <Text marginLeft={"5px"}> Dislike</Text>
-                            </Flex>
-                          </Box>
-
-                          <Box
-                            margin={"0px 0 0 5px"}
-                            alignItems={"center"}
-                            display="flex"
-                            flexDirection={"row"}
-                            fontSize="12px"
-                            fontWeight={"700"}
-                            lineHeight="16px"
-                          >
-                            {/* <Button color={"black"} variant="outline">
-                        Reply
-                      </Button> */}
-                            <Text color={"black"} marginLeft={"5px"}>
-                              <Flex
-                                justifyContent={"center"}
-                                alignItems="center"
-                              >
-                                <FaCommentAlt />{" "}
-                                <Text marginLeft={"3px"}>Comments</Text>
-                              </Flex>
-                            </Text>
-                            {/* <Flex>
-                        <FaCommentAlt  />{" "}
-                        <Text color={'black'} >
-                          Comments
-                        </Text>
-                      </Flex> */}
-                            <Text color={"black"} marginLeft={"10px"}>
-                              <Flex
-                                justifyContent={"center"}
-                                alignItems="center"
-                              >
-                                <FaShare />{" "}
-                                <Text marginLeft={"3px"}>Share</Text>
-                              </Flex>
-                            </Text>
-                            {/* <Button color={"black"} variant="outline">
-                        ...
-                      </Button> */}
-                          </Box>
-                        </Box>
+                        <CommentFooter />
                       </Box>
                     </Box>
                   </Box>
@@ -540,88 +416,7 @@ const Comment = () => {
                   </Box>
 
                   {/* box for footer */}
-                  <Box
-                    display={"flex"}
-                    alignItems="center"
-                    flexFlow={"row nowrap"}
-                  >
-                    <Box
-                      margin={"3px 4px 4px -4px"}
-                      padding="0"
-                      alignItems={"center"}
-                      display="flex"
-                      flexDirection={"row"}
-                    >
-                      <Box marginRight={"5px"}>
-                        <Flex
-                          marginLeft={"5px"}
-                          justifyContent={"center"}
-                          alignItems="center"
-                          color={"black"}
-                        >
-                          <FaThumbsUp />
-
-                          <Text
-                            color={"#1A1A1B"}
-                            margin="4px"
-                            marginBottom={"0px"}
-                            width={"auto"}
-                            lineHeight="15px"
-                            textAlign={"center"}
-                            fontSize="12px"
-                            fontWeight={"700"}
-                            pointerEvents="none"
-                            wordBreak={"normal"}
-                          >
-                            1000
-                          </Text>
-                        </Flex>
-                      </Box>
-                      <Flex
-                        marginLeft={"5px"}
-                        justifyContent={"center"}
-                        alignItems="center"
-                        color={"black"}
-                      >
-                        <FaThumbsDown />{" "}
-                        <Text marginLeft={"5px"}> Dislike</Text>
-                      </Flex>
-                    </Box>
-
-                    <Box
-                      margin={"0px 0 0 5px"}
-                      alignItems={"center"}
-                      display="flex"
-                      flexDirection={"row"}
-                      fontSize="12px"
-                      fontWeight={"700"}
-                      lineHeight="16px"
-                    >
-                      {/* <Button color={"black"} variant="outline">
-                        Reply
-                      </Button> */}
-                      <Text color={"black"} marginLeft={"5px"}>
-                        <Flex justifyContent={"center"} alignItems="center">
-                          <FaCommentAlt />{" "}
-                          <Text marginLeft={"3px"}>Comments</Text>
-                        </Flex>
-                      </Text>
-                      {/* <Flex>
-                        <FaCommentAlt  />{" "}
-                        <Text color={'black'} >
-                          Comments
-                        </Text>
-                      </Flex> */}
-                      <Text color={"black"} marginLeft={"10px"}>
-                        <Flex justifyContent={"center"} alignItems="center">
-                          <FaShare /> <Text marginLeft={"3px"}>Share</Text>
-                        </Flex>
-                      </Text>
-                      {/* <Button color={"black"} variant="outline">
-                        ...
-                      </Button> */}
-                    </Box>
-                  </Box>
+                  <CommentFooter />
 
                   {/* reply */}
                   <Box marginLeft={"28px"}>
@@ -714,238 +509,13 @@ const Comment = () => {
                         </Box>
 
                         {/* box for footer */}
-                        <Box
-                          display={"flex"}
-                          alignItems="center"
-                          flexFlow={"row nowrap"}
-                        >
-                          <Box
-                            margin={"3px 4px 4px -4px"}
-                            padding="0"
-                            alignItems={"center"}
-                            display="flex"
-                            flexDirection={"row"}
-                          >
-                            <Box marginRight={"5px"}>
-                              <Flex
-                                marginLeft={"5px"}
-                                justifyContent={"center"}
-                                alignItems="center"
-                                color={"black"}
-                              >
-                                <FaThumbsUp />
-
-                                <Text
-                                  color={"#1A1A1B"}
-                                  margin="4px"
-                                  marginBottom={"0px"}
-                                  width={"auto"}
-                                  lineHeight="15px"
-                                  textAlign={"center"}
-                                  fontSize="12px"
-                                  fontWeight={"700"}
-                                  pointerEvents="none"
-                                  wordBreak={"normal"}
-                                >
-                                  1000
-                                </Text>
-                              </Flex>
-                            </Box>
-                            <Flex
-                              marginLeft={"5px"}
-                              justifyContent={"center"}
-                              alignItems="center"
-                              color={"black"}
-                            >
-                              <FaThumbsDown />{" "}
-                              <Text marginLeft={"5px"}> Dislike</Text>
-                            </Flex>
-                          </Box>
-
-                          <Box
-                            margin={"0px 0 0 5px"}
-                            alignItems={"center"}
-                            display="flex"
-                            flexDirection={"row"}
-                            fontSize="12px"
-                            fontWeight={"700"}
-                            lineHeight="16px"
-                          >
-                            {/* <Button color={"black"} variant="outline">
-                        Reply
-                      </Button> */}
-                            <Text color={"black"} marginLeft={"5px"}>
-                              <Flex
-                                justifyContent={"center"}
-                                alignItems="center"
-                              >
-                                <FaCommentAlt />{" "}
-                                <Text marginLeft={"3px"}>Comments</Text>
-                              </Flex>
-                            </Text>
-                            {/* <Flex>
-                        <FaCommentAlt  />{" "}
-                        <Text color={'black'} >
-                          Comments
-                        </Text>
-                      </Flex> */}
-                            <Text color={"black"} marginLeft={"10px"}>
-                              <Flex
-                                justifyContent={"center"}
-                                alignItems="center"
-                              >
-                                <FaShare />{" "}
-                                <Text marginLeft={"3px"}>Share</Text>
-                              </Flex>
-                            </Text>
-                            {/* <Button color={"black"} variant="outline">
-                        ...
-                      </Button> */}
-                          </Box>
-                        </Box>
+                        <CommentFooter />
                       </Box>
                     </Box>
                   </Box>
                 </Box>
               </Box>
             </Box>
-            {/* <Box
-              paddingLeft={"37px"}
-              boxSizing="border-box"
-              overflow={"visible"}
-              position="relative"
-              transition={"background 1s"}
-              width="100%"
-            >
-              
-              <Box
-                marginTop={"16px"}
-                background="transparent"
-                borderRadius={"4px"}
-                display="flex"
-                marginLeft={"-23px"}
-                position="relative"
-                transition={"color .5s,fill .5s,background 1s"}
-                padding="8px 0 0 8px"
-                alignItems={"center"}
-              >
-                
-                <Box alignSelf={"flex-start"}>
-                  <Avatar
-                    name="Dan Abrahmov"
-                    src="https://bit.ly/dan-abramov"
-                  />
-                </Box>
-
-              
-                <Box
-                  marginLeft={"8px"}
-                  borderRadius="4px"
-                  border={"1px solid transparent"}
-                  boxSizing="border-box"
-                  maxWidth={"800px"}
-                  width="calc(100% - 56px)"
-                  padding={"0"}
-                  alignSelf="flex-start"
-                >
-                  
-                  <Box
-                    marginTop={"10px"}
-                    marginLeft="0"
-                    min-height={"18px"}
-                    marginBottom="6px"
-                    display={"flex"}
-                    flexDirection="column"
-                    alignItems={"flex-start"}
-                  >
-                    <Text
-                      color={"black"}
-                      fontSize="sm"
-                      minHeight={"18px"}
-                      display="flex"
-                      alignItems={"center"}
-                      flexFlow="row wrap"
-                      justifyContent={"flex-start"}
-                    >
-                      Juneroy quinimon explorer
-                    </Text>
-                  </Box>
-                  
-                  <Box padding={"2px 0"} width="100%" color={"black"}>
-                    Hotel management is really about successfully overseeing
-                    every operation of the business to make sure consistent
-                    growth and development. This can involve the management of
-                    anything related to the hotel industry and needs knowledge
-                    of distribution strategy, finance and accounts, customer
-                    service, staff management, marketing, catering management,
-                    hotel administration and more. Hotel management software is
-                    a technology that permits hotel operators and owners to
-                    streamline their administrative tasks while also increasing
-                    their bookings in both the short and long term. Your hotel
-                    management system is not only important for your own
-                    day-to-day operations, but it is a vital part of improving
-                    the overall guest experience. From the beginning of your
-                    customers’ online booking journey until the completion of
-                    their stay and their feedback once
-                  </Box>
-
-                  
-                  <Box
-                    display={"flex"}
-                    alignItems="center"
-                    flexFlow={"row nowrap"}
-                  >
-                    <Box
-                      margin={"3px 4px 4px -4px"}
-                      padding="0"
-                      alignItems={"center"}
-                      display="flex"
-                      flexDirection={"row"}
-                    >
-                      <Button color={"black"} variant="outline">
-                        <FaThumbsUp />
-                      </Button>
-                      <Text
-                        color={"#1A1A1B"}
-                        margin="4px"
-                        width={"auto"}
-                        lineHeight="15px"
-                        textAlign={"center"}
-                        fontSize="12px"
-                        fontWeight={"700"}
-                        pointerEvents="none"
-                        wordBreak={"normal"}
-                      >
-                        61
-                      </Text>
-                      <Button color={"black"} variant="outline">
-                        <FaThumbsDown />
-                      </Button>
-                    </Box>
-
-                    <Box
-                      margin={"0px 0 0 5px"}
-                      alignItems={"center"}
-                      display="flex"
-                      flexDirection={"row"}
-                      fontSize="12px"
-                      fontWeight={"700"}
-                      lineHeight="16px"
-                    >
-                      <Button color={"black"} variant="outline">
-                        Reply
-                      </Button>
-                      <Button color={"black"} variant="outline">
-                        Share
-                      </Button>
-                      <Button color={"black"} variant="outline">
-                        ...
-                      </Button>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            </Box> */}
           </Box>
         </Box>
       </Box>

@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Avatar, Box, Button, Flex, Link } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, Link, Text } from "@chakra-ui/react";
 import React from "react";
 
 const Profile = () => {
@@ -7,9 +7,32 @@ const Profile = () => {
     <Flex justifyContent={"space-between"}>
       <Box bg="white" p={4} color="black">
         <Flex alignItems={"center"}>
-          <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+          <Avatar
+            name="Dan Abrahmov"
+            alignSelf={"start"}
+            src="https://bit.ly/dan-abramov"
+          />
           <Flex flexDirection={"column"} className="ms-4">
             <Link fontWeight={"bolder"}>stellamartinez</Link>
+            <Flex justifyContent={"start"}>
+              <Box bg="white" p={4} paddingLeft="0px" color="black">
+                <Text marginBottom={"10px"} fontSize={"11px"}>
+                  Community
+                </Text>
+                <Flex alignItems={"center"}>
+                  <Avatar
+                    size={"sm"}
+                    name="Dan Abrahmov"
+                    src="https://bit.ly/tioluwani-kolawole"
+                  />
+                  <Flex flexDirection={"column"} className="ms-2">
+                    <Link fontWeight={"bolder"} fontSize={"11px"}>
+                      Humanitas
+                    </Link>
+                  </Flex>
+                </Flex>
+              </Box>
+            </Flex>
           </Flex>
         </Flex>
       </Box>
