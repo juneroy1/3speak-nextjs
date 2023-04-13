@@ -5,6 +5,8 @@ import {
   FaThumbsUp,
   FaThumbsDown,
   FaShare,
+  FaRegThumbsUp,
+  FaRegThumbsDown,
 } from "react-icons/fa";
 const CommentFooter = () => {
   const [comment, setComment] = useState(false);
@@ -33,7 +35,7 @@ const CommentFooter = () => {
               color={"black"}
             >
               {/* <Button variant="outline"> */}
-              <FaThumbsUp />
+              <FaRegThumbsUp />
               <Text
                 color={"#1A1A1B"}
                 margin="4px"
@@ -59,7 +61,7 @@ const CommentFooter = () => {
             color={"black"}
           >
             {/* <Button variant="outline"> */}
-            <FaThumbsDown /> <Text marginLeft={"5px"}> Dislike</Text>
+            <FaRegThumbsDown /> <Text marginLeft={"5px"}> Dislike</Text>
             {/* </Button> */}
           </Flex>
         </Box>

@@ -66,12 +66,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Dashboard", icon: FiHome },
   { name: "Upload", icon: FaCloudUploadAlt },
   { name: "Videos", icon: FaVideo },
-  { name: "Communities", icon: FaUsers },
-  { name: "VOD Recordings", icon: FaArchive },
-  { name: "Statistics", icon: FaChartLine },
-  { name: "Profile Settings", icon: FaUserAlt },
-  { name: "Podcast Settings", icon: FaCog },
-  { name: "Wallet", icon: FaWallet },
+
   { name: "My Channel", icon: FaExternalLinkAlt },
   { name: "Logout", icon: FaSignOutAlt },
 ];
