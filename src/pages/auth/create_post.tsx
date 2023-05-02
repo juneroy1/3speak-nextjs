@@ -113,8 +113,19 @@ export default function SidebarWithHeader({
                     flexDirection="column"
                     justifyContent={"center"}
                   >
-                    <Flex height={"100%"}>
-                      <Box width={"40%"} padding="20px" paddingY={"40px"}>
+                    <Flex
+                      height={"100%"}
+                      flexDirection={{
+                        base: "column-reverse",
+                        md: "column-reverse",
+                        lg: "row",
+                      }}
+                    >
+                      <Box
+                        width={{ base: "100%", md: "100%", lg: "40%" }}
+                        padding="20px"
+                        paddingY={{ base: "5px", md: "5px", lg: "40px" }}
+                      >
                         <Flex
                           width={"100%"}
                           height="100%"
@@ -132,12 +143,17 @@ export default function SidebarWithHeader({
                             justifyContent="center"
                             alignItems={"center"}
                             border={"1px dotted grey"}
+                            fontSize={{ base: "60px", md: "60px", lg: "100px" }}
                           >
-                            <FaUpload fontSize={"100px"} color="grey" />
+                            <FaUpload color="grey" />
                           </Flex>
                         </Flex>
                       </Box>
-                      <Box width={"60%"} padding="20px" paddingY={"40px"}>
+                      <Box
+                        width={{ base: "100%", md: "100%", lg: "60%" }}
+                        padding="20px"
+                        paddingY={{ base: "5px", md: "5px", lg: "40px" }}
+                      >
                         <Flex
                           width={"100%"}
                           height="100%"
@@ -145,10 +161,19 @@ export default function SidebarWithHeader({
                           alignItems={"start"}
                           flexDirection="column"
                         >
-                          <Text as={"h1"}>
+                          <Text
+                            as={"h1"}
+                            fontSize={{
+                              base: "25px !important",
+                              sm: "25px !important",
+                              lg: "39px",
+                            }}
+                          >
                             Drag and drop video files to upload
                           </Text>
-                          <Text fontSize={"16px"}>
+                          <Text
+                            fontSize={{ base: "12px", md: "12px", lg: "16px" }}
+                          >
                             your videos will be private until you publish them
                           </Text>
                           <Button size={"lg"} colorScheme="twitter">

@@ -112,25 +112,35 @@ export default function SidebarWithHeader({
                     flexDirection="column"
                     justifyContent={"center"}
                   >
-                    <Flex justifyContent={"space-evenly"} alignItems="center">
+                    <Flex
+                      marginTop={{ base: "50px", md: "50px", lg: "0px" }}
+                      flexDirection={{
+                        base: "column",
+                        md: "column",
+                        lg: "row",
+                      }}
+                      justifyContent={"space-evenly"}
+                      alignItems="center"
+                    >
                       <Flex
-                        width={"372px"}
-                        height="332px"
+                        width={{ base: "300px", md: "300px", lg: "372px" }}
+                        height={{ base: "200px", md: "200px", lg: "332px" }}
                         border={"2px dotted"}
                         justifyContent="center"
                         alignItems={"center"}
                         flexDirection="column"
                         borderRadius={"10px"}
                       >
-                        <SlPicture
-                          width={"100px"}
-                          color="black"
-                          fontSize="70px"
-                        />
+                        <Text
+                          fontSize={{ base: "50px", md: "50px", lg: "70px" }}
+                        >
+                          <SlPicture width={"100px"} color="black" />
+                        </Text>
+
                         <Text
                           fontWeight={"400"}
                           lineHeight="43.57px"
-                          fontSize={"36px"}
+                          fontSize={{ base: "25px", md: "25px", lg: "36px" }}
                           color="gray"
                         >
                           Edit your draft post
@@ -138,7 +148,7 @@ export default function SidebarWithHeader({
                         <Text
                           fontWeight={"400"}
                           lineHeight="43.57px"
-                          fontSize={"36px"}
+                          fontSize={{ base: "25px", md: "25px", lg: "36px" }}
                           color="gray"
                         >
                           Post title
@@ -174,7 +184,7 @@ export default function SidebarWithHeader({
                         <Text
                           fontWeight={"400"}
                           fontStyle="italic"
-                          fontSize={"36px"}
+                          fontSize={{ base: "25px", md: "25px", lg: "36px" }}
                           lineHeight="44px"
                           color="gray"
                         >
@@ -182,23 +192,24 @@ export default function SidebarWithHeader({
                         </Text>
                       </Box>
                       <Flex
-                        width={"372px"}
-                        height="332px"
+                        width={{ base: "300px", md: "300px", lg: "372px" }}
+                        height={{ base: "200px", md: "200px", lg: "332px" }}
                         border={"2px dotted"}
                         justifyContent="center"
                         alignItems={"center"}
                         flexDirection="column"
                         borderRadius={"10px"}
                       >
-                        <SlPicture
-                          width={"100px"}
-                          color="black"
-                          fontSize="70px"
-                        />
+                        <Text
+                          fontSize={{ base: "50px", md: "50px", lg: "70px" }}
+                        >
+                          <SlPicture width={"100px"} color="black" />
+                        </Text>
+
                         <Text
                           fontWeight={"400"}
                           lineHeight="43.57px"
-                          fontSize={"36px"}
+                          fontSize={{ base: "25px", md: "25px", lg: "36px" }}
                           color="gray"
                         >
                           Create a new Post
