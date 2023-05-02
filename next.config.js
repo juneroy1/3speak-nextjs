@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.hive.blog"],
+    domains: ["images.hive.blog",'api.lorem.space', "picsum.photos","placeimg.com"],
     remotePatterns: [
       {
         protocol: "https",

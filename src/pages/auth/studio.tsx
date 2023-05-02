@@ -1,5 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import styled from "styled-components";
+import { useAppStore } from '../../lib/store'
 
 import {
   IconButton,
@@ -57,6 +58,7 @@ import {
   FaVideo,
   FaWallet,
 } from "react-icons/fa";
+import { News } from "@/lib/slices/createStudioSlice";
 
 interface LinkItemProps {
   name: string;
@@ -76,6 +78,33 @@ export default function SidebarWithHeader({
 }: {
   children: ReactNode;
 }) {
+  const { news, video_count, followers_count, views_count } = useAppStore()
+  const [mNews, setMNews] = useState<News[]>([])
+  const [mVideoCount, setMVideoCount] = useState<Number>();
+  const [mFollowersCount, setMFollowersCount] = useState<Number>();
+  const [mViewsCount, setMViewsCount] = useState<Number>();
+
+  // get the list of news
+  useEffect(() => {
+    setMNews(news)
+  }, [news])
+
+  // get total videos 
+  useEffect(() => {
+    setMVideoCount(video_count)
+  }, [video_count])
+
+  // get total followers
+  useEffect(() => {
+    setMFollowersCount(followers_count)
+  }, [followers_count])
+
+  // get total views count
+  useEffect(() => {
+    setMViewsCount(views_count)
+  }, [views_count])
+
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
@@ -178,7 +207,7 @@ export default function SidebarWithHeader({
                         fontSize={"1.25rem"}
                         lineHeight="1.2"
                       >
-                        100
+                        {mVideoCount}
                       </Text>
                     </Box>
                     <Box width={"auto"} flex="0 0 auto" maxWidth={"100%"}>
@@ -240,7 +269,7 @@ export default function SidebarWithHeader({
                         fontSize={"1.25rem"}
                         lineHeight="1.2"
                       >
-                        100
+                        {mFollowersCount}
                       </Text>
                     </Box>
                     <Box width={"auto"} flex="0 0 auto" maxWidth={"100%"}>
@@ -301,7 +330,7 @@ export default function SidebarWithHeader({
                         fontSize={"1.25rem"}
                         lineHeight="1.2"
                       >
-                        100
+                        {mViewsCount}
                       </Text>
                     </Box>
                     <Box width={"auto"} flex="0 0 auto" maxWidth={"100%"}>
@@ -340,181 +369,39 @@ export default function SidebarWithHeader({
                   </CardHeader>
 
                   <CardBody flex={"1 1 auto"} padding="1.25rem">
-                    <Card
-                      marginTop={"4%"}
-                      position="relative"
-                      wordBreak="break-word"
-                      backgroundClip={"border-box"}
-                      border="1px solid #e3e6f0"
-                      borderRadius={"0.35rem"}
-                    >
-                      <CardBody display={"flex"} flexDirection={"column"}>
-                        <Link
-                          color={"#4e73df"}
-                          textDecoration="none"
-                          backgroundColor={"transparent"}
-                        >
-                          <Text
-                            as={"h4"}
-                            marginBottom="0.5rem"
-                            fontWeight={"400"}
-                            lineHeight="1.2"
-                            fontSize={"1.5rem"}
+                    {mNews?.map((news, index) => <Box>
+                      <Card
+                        key={index}
+                        marginTop={"4%"}
+                        position="relative"
+                        wordBreak="break-word"
+                        backgroundClip={"border-box"}
+                        border="1px solid #e3e6f0"
+                        borderRadius={"0.35rem"}
+                      >
+                        <CardBody display={"flex"} flexDirection={"column"}>
+                          <Link
+                            color={"#4e73df"}
+                            textDecoration="none"
+                            backgroundColor={"transparent"}
                           >
-                            USDC, Silicon Valley Bank, Stable Coins - CTT
+                            <Text
+                              as={"h4"}
+                              marginBottom="0.5rem"
+                              fontWeight={"400"}
+                              lineHeight="1.2"
+                              fontSize={"1.5rem"}
+                            >
+                              {news.title}
+                            </Text>
+                          </Link>
+                          <Text textAlign={"left"} as={"small"}>
+                            {news.description}
+
                           </Text>
-                        </Link>
-                        <Text textAlign={"left"} as={"small"}>
-                          author: spknetwork.chat
-                        </Text>
-                      </CardBody>
-                    </Card>
-                    <Card
-                      marginTop={"4%"}
-                      position="relative"
-                      wordBreak="break-word"
-                      backgroundClip={"border-box"}
-                      border="1px solid #e3e6f0"
-                      borderRadius={"0.35rem"}
-                    >
-                      <CardBody display={"flex"} flexDirection={"column"}>
-                        <Link
-                          color={"#4e73df"}
-                          textDecoration="none"
-                          backgroundColor={"transparent"}
-                        >
-                          <Text
-                            as={"h4"}
-                            marginBottom="0.5rem"
-                            fontWeight={"400"}
-                            lineHeight="1.2"
-                            fontSize={"1.5rem"}
-                          >
-                            Introducing the Acela Core - Upgrading Existing Web2
-                            Apps into True Web3 Dapps
-                          </Text>
-                        </Link>
-                        <Text textAlign={"left"} as={"small"}>
-                          author: spknetwork.chat
-                        </Text>
-                      </CardBody>
-                    </Card>
-                    <Card
-                      marginTop={"4%"}
-                      position="relative"
-                      wordBreak="break-word"
-                      backgroundClip={"border-box"}
-                      border="1px solid #e3e6f0"
-                      borderRadius={"0.35rem"}
-                    >
-                      <CardBody display={"flex"} flexDirection={"column"}>
-                        <Link
-                          color={"#4e73df"}
-                          textDecoration="none"
-                          backgroundColor={"transparent"}
-                        >
-                          <Text
-                            as={"h4"}
-                            marginBottom="0.5rem"
-                            fontWeight={"400"}
-                            lineHeight="1.2"
-                            fontSize={"1.5rem"}
-                          >
-                            Multiparty State Channels - SPK Network Team Meeting
-                          </Text>
-                        </Link>
-                        <Text textAlign={"left"} as={"small"}>
-                          author: spknetwork.chat
-                        </Text>
-                      </CardBody>
-                    </Card>
-                    <Card
-                      marginTop={"4%"}
-                      position="relative"
-                      wordBreak="break-word"
-                      backgroundClip={"border-box"}
-                      border="1px solid #e3e6f0"
-                      borderRadius={"0.35rem"}
-                    >
-                      <CardBody display={"flex"} flexDirection={"column"}>
-                        <Link
-                          color={"#4e73df"}
-                          textDecoration="none"
-                          backgroundColor={"transparent"}
-                        >
-                          <Text
-                            as={"h4"}
-                            marginBottom="0.5rem"
-                            fontWeight={"400"}
-                            lineHeight="1.2"
-                            fontSize={"1.5rem"}
-                          >
-                            Multiparty State Channels - SPK Network Team Meeting
-                          </Text>
-                        </Link>
-                        <Text textAlign={"left"} as={"small"}>
-                          author: spknetwork.chat
-                        </Text>
-                      </CardBody>
-                    </Card>
-                    <Card
-                      marginTop={"4%"}
-                      position="relative"
-                      wordBreak="break-word"
-                      backgroundClip={"border-box"}
-                      border="1px solid #e3e6f0"
-                      borderRadius={"0.35rem"}
-                    >
-                      <CardBody display={"flex"} flexDirection={"column"}>
-                        <Link
-                          color={"#4e73df"}
-                          textDecoration="none"
-                          backgroundColor={"transparent"}
-                        >
-                          <Text
-                            as={"h4"}
-                            marginBottom="0.5rem"
-                            fontWeight={"400"}
-                            lineHeight="1.2"
-                            fontSize={"1.5rem"}
-                          >
-                            Multiparty State Channels - SPK Network Team Meeting
-                          </Text>
-                        </Link>
-                        <Text textAlign={"left"} as={"small"}>
-                          author: spknetwork.chat
-                        </Text>
-                      </CardBody>
-                    </Card>
-                    <Card
-                      marginTop={"4%"}
-                      position="relative"
-                      wordBreak="break-word"
-                      backgroundClip={"border-box"}
-                      border="1px solid #e3e6f0"
-                      borderRadius={"0.35rem"}
-                    >
-                      <CardBody display={"flex"} flexDirection={"column"}>
-                        <Link
-                          color={"#4e73df"}
-                          textDecoration="none"
-                          backgroundColor={"transparent"}
-                        >
-                          <Text
-                            as={"h4"}
-                            marginBottom="0.5rem"
-                            fontWeight={"400"}
-                            lineHeight="1.2"
-                            fontSize={"1.5rem"}
-                          >
-                            Multiparty State Channels - SPK Network Team Meeting
-                          </Text>
-                        </Link>
-                        <Text textAlign={"left"} as={"small"}>
-                          author: spknetwork.chat
-                        </Text>
-                      </CardBody>
-                    </Card>
+                        </CardBody>
+                      </Card>
+                    </Box>)}
                   </CardBody>
                 </Card>
               </Box>

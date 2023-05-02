@@ -87,6 +87,7 @@ import {
   FaWallet,
 } from "react-icons/fa";
 import { SlPicture } from "react-icons/sl";
+import { useAppStore } from '../../lib/store'
 
 interface LinkItemProps {
   name: string;
@@ -107,6 +108,7 @@ export default function StudioVideos({ children }: { children: ReactNode }) {
   const date = `${current.getDate()}/${
     current.getMonth() + 1
   }/${current.getFullYear()}`;
+  const { post } = useAppStore()
 
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
