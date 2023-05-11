@@ -7,7 +7,7 @@ import { Formik } from "formik";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-export-i18n";
 import { Typography, Box, Flex } from "src/components";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import SignUp from "@/components/signup/SignUp";
 import Link from "next/link";
 
@@ -106,10 +106,10 @@ const SignIn = () => {
                 {t("login.disclaimer")}
               </Typography>
             </Box>
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
               ref={recaptchaRefSignIn}
               sitekey="6LczvdokAAAAAGQtbk2MABrUD8oyYbmi9Z3O8Uio"
-            />
+            /> */}
             <Flex width="100%" justifyContent="center" mt="1rem">
               <StyledButton type="submit">Log in</StyledButton>
             </Flex>

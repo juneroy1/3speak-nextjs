@@ -19,8 +19,8 @@ import {
 import { faMobileAndroid } from "@fortawesome/free-solid-svg-icons";
 const threespeak = {
   filter: "drop-shadow(2px 4px 6px black)",
-  imageRendering: "pixelated",
 };
+// juneroy
 const navblog = {
   filter: "brightness(0.45)",
 };
@@ -191,8 +191,8 @@ export const Sidebar = () => {
               src="/nav/spk_network.png"
               alt={"SPK Network"}
               width={30}
-              style={threespeak}
               height={30}
+              style={threespeak}
             />
           </span>
         </Link>
