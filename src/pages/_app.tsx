@@ -13,8 +13,8 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
-import { ApolloProvider } from '@apollo/client';
-import client from '../lib/apolloClient';
+import { ApolloProvider } from "@apollo/client";
+import client from "../lib/apolloClient";
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -27,8 +27,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Box>{!isAuth && <Sidebar />}</Box>
         <Box width={"100%"} backgroundColor="#EFF4F6">
           <ChakraProvider>
-          <ApolloProvider client={client}>
-            <Component {...pageProps} />
+            <ApolloProvider client={client}>
+              <Component {...pageProps} />
             </ApolloProvider>
           </ChakraProvider>
         </Box>
