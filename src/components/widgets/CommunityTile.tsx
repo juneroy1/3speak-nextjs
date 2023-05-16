@@ -4,21 +4,21 @@ import { background } from "styled-system";
 
 export function CommunityTile(props: any) {
   const [communityPicture, setCommunityPicture] = useState("");
-
   useEffect(() => {
     const load = async () => {};
-
     void load();
   }, []);
 
   return (
     <Col className="col-md-3 col-sm-3 mb-3" md={3} sm={3}>
-      <a href={`#/community/${props.reflink}`} className="font-weight-bold">
+      <a href={`/community/${props.reflink}`} className="font-weight-bold">
         <div className="community-card channels-card shadow-sm">
+        
           <div
             className="text-left text-dark d-flex justify-content-center align-items-center"
             style={{ display: "inline-block", float: "left" }}
           >
+            
             <img
               style={{
                 width: "40px",

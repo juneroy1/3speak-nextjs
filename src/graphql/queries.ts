@@ -154,8 +154,8 @@ export const GET_PROFILE = gql`
 `;
 
 export const GET_COMMUNITIES = gql`
-  query MyQuery {
-    community(id: "hive-163772") {
+  query MyQuery($id: String) {
+    community(id:$id) {
       about
       created_at
       is_nsfw
