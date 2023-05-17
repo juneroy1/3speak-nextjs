@@ -152,33 +152,45 @@ export const GET_PROFILE = gql`
     }
   }
 `;
-
+// latestFeed {
+//   items {
+//     body
+//     created_at
+//     parent_author
+//     parent_permlink
+//     permlink
+//     title
+//     updated_at
+//     ... on HivePost {
+//       parent_author
+//       parent_permlink
+//       app_metadata
+//       body
+//       community
+//       created_at
+//       flags
+//     }
+//   }
+// }
 export const GET_COMMUNITIES = gql`
   query MyQuery($id: String) {
-    community(id:$id) {
+    community(id: $id) {
       about
       created_at
       is_nsfw
       lang
       subscribers
       title
-      latestFeed {
+      trendingFeed(pagination: { limit: 100 }, spkvideo: { only: true }) {
         items {
-          body
-          created_at
-          parent_author
-          parent_permlink
-          permlink
-          title
-          updated_at
           ... on HivePost {
-            parent_author
-            parent_permlink
-            app_metadata
-            body
-            community
-            created_at
-            flags
+            title
+            author {
+              username
+              profile
+              id
+            }
+            spkvideo
           }
         }
       }
