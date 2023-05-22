@@ -181,9 +181,15 @@ export const GET_COMMUNITIES = gql`
       lang
       subscribers
       title
-      trendingFeed(pagination: { limit: 100 }, spkvideo: { only: true }) {
+      trendingFeed {
         items {
+          author {
+            id
+          }
           ... on HivePost {
+            parent_author
+            parent_permlink
+            community
             title
             author {
               username
@@ -191,6 +197,25 @@ export const GET_COMMUNITIES = gql`
               id
             }
             spkvideo
+          }
+        }
+      }
+      latestFeed {
+        items {
+          author {
+            id
+          }
+          ... on HivePost {
+            parent_author
+            parent_permlink
+            author {
+              id
+              profile
+              username
+            }
+            community
+            spkvideo
+            title
           }
         }
       }

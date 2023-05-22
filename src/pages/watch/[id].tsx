@@ -24,7 +24,7 @@ import Tags from "@/components/watch/Tags";
 import Title from "@/components/watch/Title";
 import VideoPlayer from "@/components/watch/VideoPlayer";
 import Community from "@/components/watch/Community";
-
+// https://3speak.tv/watch?v=neopch/bttopqjl
 export default function Watch() {
   return (
     <Box background={"#EFF4F5"}>
@@ -43,12 +43,23 @@ export default function Watch() {
               <Box>
                 <Flex flexDirection={"column"}>
                   <Box>
+                    {/* title */}
                     <Title />
+
+                    {/* tags */}
                     <Tags />
                   </Box>
                   <Flex justifyContent={"end"} marginTop="1rem">
+                    {/* reactions */}
                     <Reactions />
                   </Flex>
+                  {/* <Flex
+                    justifyContent={"end"}
+                    marginTop="1rem"
+                    paddingRight={"50px"}
+                  >
+                   
+                  </Flex> */}
                 </Flex>
               </Box>
             </Box>
@@ -103,6 +114,10 @@ export default function Watch() {
               h="10"
               bg="white.600"
             >
+              {/* <Text marginTop={"1px"} fontSize={"2xl"} fontWeight={"bold"}>
+                More from Juneroy quin
+              </Text> */}
+
               <Video videoSrc="https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfKKVdjVcJpKJDN8sx7ZjXNkfrVDtAkjdi59a6bGJtSa9MJdsqxYnqALaV6iRcMCMd5TL4RfZMhnbb6e?format=jpeg&mode=cover&width=340&height=191" />
               <Video videoSrc="https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfKKVdjVim5xXXBHudVXW7uT6ErgMsQHTXm2ELwa6JxMMvR1j9aYic2jgGRz4wcXHkeUnAJM5CWiwria?format=jpeg&mode=cover&width=340&height=191" />
               <Video videoSrc="https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfKKVdjVhcN63NCz569HVsSov72VRbsEsSxSrf7JQJBhpsDNxyNfNKrnmLNvLJCfNaX26VjPcZpap3f4?format=jpeg&mode=cover&width=340&height=191" />

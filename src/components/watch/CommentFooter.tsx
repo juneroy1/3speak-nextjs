@@ -78,7 +78,7 @@ const CommentFooter = () => {
           {/* <Button color={"black"} variant="outline">
                         Reply
                       </Button> */}
-          <Text color={"black"} marginLeft={"5px"}>
+          <Box color={"black"} marginLeft={"5px"}>
             <Flex
               cursor={"pointer"}
               onClick={showComment}
@@ -89,20 +89,20 @@ const CommentFooter = () => {
               <FaCommentAlt /> <Text marginLeft={"3px"}>Comments</Text>
               {/* </Button> */}
             </Flex>
-          </Text>
+          </Box>
           {/* <Flex>
                         <FaCommentAlt  />{" "}
                         <Text color={'black'} >
                           Comments
                         </Text>
                       </Flex> */}
-          <Text color={"black"} marginLeft={"10px"}>
+          <Box color={"black"} marginLeft={"10px"}>
             <Flex justifyContent={"center"} alignItems="center">
               {/* <Button variant="outline"> */}
               <FaShare /> <Text marginLeft={"3px"}>Share</Text>
               {/* </Button> */}
             </Flex>
-          </Text>
+          </Box>
           {/* <Button color={"black"} variant="outline">
                         ...
                       </Button> */}

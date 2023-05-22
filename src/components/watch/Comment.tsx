@@ -97,7 +97,7 @@ const Comment = () => {
           </Box>
         </Box>
       </Box>
-      <Text
+      <Flex
         marginTop={"16px"}
         color={"black"}
         fontSize={"0.8125rem"}
@@ -105,13 +105,11 @@ const Comment = () => {
         fontWeight={"500"}
         lineHeight="1.2"
       >
-        <Flex>
-          <FaCommentAlt fontSize={"15px"} />{" "}
-          <Text fontSize={"15px"} marginLeft={"5px"}>
-            Comments:
-          </Text>
-        </Flex>
-      </Text>
+        <FaCommentAlt fontSize={"15px"} />{" "}
+        <Text fontSize={"15px"} marginLeft={"5px"}>
+          Comments:
+        </Text>
+      </Flex>
       <Box
         background="#fff none repeat scroll 0 0"
         borderRadius={"2px"}

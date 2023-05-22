@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
+
 import {
   Box,
   Button,
@@ -18,6 +19,12 @@ const CommunityDetails = () => {
   const { loading, error, data } = useQuery(GET_COMMUNITIES, {
     variables: { id: id },
   });
+
+  const [showFeed, setShowFeed] = useState<number>(1);
+
+  const showFeedById = (number: number) => {
+    setShowFeed(number);
+  };
 
   if (loading) {
     return (
@@ -50,8 +57,11 @@ const CommunityDetails = () => {
 
   if (error) return <p>Error: {error.message}</p>;
   const { community } = data;
+
   const trendingFeed = data.community.trendingFeed.items;
-  console.log("trendingFeed", trendingFeed);
+  const latestFeed = data.community.latestFeed.items;
+
+  // console.log("data.community.latestFeed", data.community.latestFeed);
   return (
     <Box background={"#f9f9fa"}>
       <Box
@@ -148,7 +158,7 @@ const CommunityDetails = () => {
               <a
                 className="nav-link active text-dark"
                 data-toggle="tab"
-                href="#comVidContainer"
+                href="#videos"
                 role="tab"
               >
                 Videos
@@ -176,18 +186,34 @@ const CommunityDetails = () => {
             </li>
           </ul>
           <Divider
-            marginTop={"1rem"}
-            marginBottom="1rem"
+            marginTop={"1.5rem"}
+            marginBottom="1.5rem"
             border={"0"}
             borderTop="1px solid rgba(0,0,0,0.1)"
           />
-          <ButtonGroup variant="outline" isAttached spacing="0">
-            <Button>TRENDING</Button>
-            <Button>NEW</Button>
+          <ButtonGroup
+            boxShadow={"1px 1px 4px rgba(0,0,0,0.4)"}
+            borderRadius="6px"
+            variant="outline"
+            isAttached
+            spacing="0"
+          >
+            {/* boxShadow={"0 1px 4px rgba(0,0,0,0.4)"} */}
+            <Button
+              size="lg"
+              className="active"
+              onClick={() => showFeedById(1)}
+            >
+              TRENDING
+            </Button>
+            {/* boxShadow={"1px 1px 4px rgba(0,0,0,0.4)"} */}
+            <Button size="lg" onClick={() => showFeedById(2)}>
+              NEW
+            </Button>
           </ButtonGroup>
           <Divider
-            marginTop={"1rem"}
-            marginBottom="1rem"
+            marginTop={"1.5rem"}
+            marginBottom="1.5rem"
             border={"0"}
             borderTop="1px solid rgba(0,0,0,0.1)"
           />
@@ -199,77 +225,234 @@ const CommunityDetails = () => {
             lineHeight={"1.2"}
             fontSize="1.421875rem"
           >
-            Trending Video
+            {showFeed == 1 && <Text>Trending Video</Text>}
+            {showFeed == 2 && <Text>New Video</Text>}
           </Text>
           <Box>
             <Box className="row">
-              {trendingFeed.map((item: any, index: number) => (
-                <Box key={index} className="col-xl-2 col-lg-3  col-6 p-2 mb-3">
+              {showFeed == 1 &&
+                trendingFeed.map((item: any, index: number) => (
                   <Box
-                    opacity={"1"}
-                    position="relative"
-                    transition={"all .6s ease-in-out"}
-                    textAlign="center"
+                    key={index}
+                    className="col-xl-2 col-lg-3  col-6 p-2 mb-3"
                   >
-                    {/* item.spkvideo.thumbnail_url */}
-                    {/* https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfHesJoVyPMpqrFtC5XXeBFusWE5kChAqM44ADT8gf6F9n9iyGYf7XdkZGdvjjnk9nHNuzybYprGWG4E?format=jpeg&mode=cover&width=340&height=191 */}
-                    {/* <Box></Box> */}
-                    <Link href="https://3speak.tv/watch?v=cttpodcast/zjvcobqa">
-                      <Image
-                        className="img-fluid"
-                        borderColor={"transparent!important"}
-                        background="linear-gradient(135deg,#171b20 1%,#343a40 100%)"
-                        width={"100% !important"}
-                        padding="5px"
-                        maxHeight={"100px"}
-                        height="auto"
-                        objectFit="cover"
-                        src={`${item.spkvideo.thumbnail_url}`}
-                        alt="Dan Abramov"
-                      />
-                    </Link>
-                  </Box>
-                  <Box minHeight={"65px"}>
-                    <Text
-                      fontSize={"13px"}
-                      overflowWrap="break-word"
-                      textOverflow={"ellipsis"}
-                      overflow="hidden"
-                      maxHeight={"2.8em"}
-                      lineHeight="1.4em"
-                      display={"block"}
-                      marginTop="0.5rem !important"
-                      fontWeight={"500"}
-                    >
-                      {item.title}
-                    </Text>
                     <Box
-                      width={"calc( 100% - 1rem )"}
-                      display="block"
-                      position={"unset"}
+                      opacity={"1"}
+                      position="relative"
+                      transition={"all .6s ease-in-out"}
+                      textAlign="center"
                     >
+                      {/* item.spkvideo.thumbnail_url */}
+                      {/* https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfHesJoVyPMpqrFtC5XXeBFusWE5kChAqM44ADT8gf6F9n9iyGYf7XdkZGdvjjnk9nHNuzybYprGWG4E?format=jpeg&mode=cover&width=340&height=191 */}
+                      {/* <Box></Box> */}
                       <Box
-                        display={"block !important"}
-                        marginTop="0.5rem !important"
-                        justifyContent={"justify !important"}
+                        left={"5px"}
+                        width="50px"
+                        background={"#e8e8e8 none repeat scroll 0 0"}
+                        borderRadius="2px"
+                        bottom={"5px"}
+                        color="#000"
+                        fontSize={"11px"}
+                        fontWeight="500"
+                        padding={"0 6px"}
+                        position="absolute"
+                        display="flex"
+                        justifyContent={"space-between"}
                       >
-                        <p className="black_col">
-                          <b>
-                            <Link href="/user/cttpodcast">
-                              <i className="fa fa-user"></i>
-                              {item.author.username}
-                            </Link>
-                          </b>
-                        </p>
-                        <p>a day ago</p>
-                        <p>
-                          <b>$63.17</b>
-                        </p>
+                        <Image
+                          src="https://3speak.tv/img/play.svg"
+                          alt="play"
+                        ></Image>
+                        <Text as={"span"}>20</Text>
+                      </Box>
+                      <Box
+                        right={"5px"}
+                        width="auto"
+                        background={"#e8e8e8 none repeat scroll 0 0"}
+                        borderRadius="2px"
+                        bottom={"5px"}
+                        color="#000"
+                        fontSize={"11px"}
+                        fontWeight="500"
+                        padding={"0 6px"}
+                        position="absolute"
+                        display="flex"
+                        justifyContent={"space-between"}
+                      >
+                        <Text as={"span"}>12:48</Text>
+                      </Box>
+                      <Link href="https://3speak.tv/watch?v=cttpodcast/zjvcobqa">
+                        <Image
+                          className="img-fluid"
+                          borderColor={"transparent!important"}
+                          background="linear-gradient(135deg,#171b20 1%,#343a40 100%)"
+                          width={"100% !important"}
+                          padding="5px"
+                          maxHeight={"200px"}
+                          height="auto"
+                          objectFit="cover"
+                          src={`${item.spkvideo.thumbnail_url}`}
+                          alt="Dan Abramov"
+                        />
+                      </Link>
+                    </Box>
+                    <Box minHeight={"65px"}>
+                      <Link
+                        textDecoration={"none"}
+                        href={`/watch?v=${item.author.username}`}
+                      >
+                        <Text
+                          textDecoration={"none"}
+                          fontSize={"13px"}
+                          overflowWrap="break-word"
+                          textOverflow={"ellipsis"}
+                          overflow="hidden"
+                          maxHeight={"2.8em"}
+                          lineHeight="1.4em"
+                          display={"block"}
+                          marginTop="0.5rem !important"
+                          marginBottom="0.5rem !important"
+                          fontWeight={"500"}
+                        >
+                          {item.title}
+                        </Text>
+                      </Link>
+                      <Box
+                        width={"calc( 100% - 1rem )"}
+                        display="block"
+                        position={"unset"}
+                      >
+                        <Box
+                          display={"block !important"}
+                          marginTop="0.5rem !important"
+                          justifyContent={"justify !important"}
+                        >
+                          <p className="black_col">
+                            <b>
+                              <Link href="/user/cttpodcast">
+                                <i className="fa fa-user"></i>
+                                {item.author.username}
+                              </Link>
+                            </b>
+                          </p>
+                          <p>a day ago</p>
+                          <p>
+                            <b>$63.17</b>
+                          </p>
+                        </Box>
                       </Box>
                     </Box>
                   </Box>
-                </Box>
-              ))}
+                ))}
+
+              {showFeed == 2 &&
+                latestFeed.map((item: any, index: number) => (
+                  <Box
+                    key={index}
+                    className="col-xl-2 col-lg-3  col-6 p-2 mb-3"
+                  >
+                    <Box
+                      opacity={"1"}
+                      position="relative"
+                      transition={"all .6s ease-in-out"}
+                      textAlign="center"
+                    >
+                      {/* item.spkvideo.thumbnail_url */}
+                      {/* https://images.hive.blog/p/99pyU5Ga1kwr5bsMXthzYLbcngN4W2P8NtU9TWTdHC3HaQbjuuRfHesJoVyPMpqrFtC5XXeBFusWE5kChAqM44ADT8gf6F9n9iyGYf7XdkZGdvjjnk9nHNuzybYprGWG4E?format=jpeg&mode=cover&width=340&height=191 */}
+                      {/* <Box></Box> */}
+                      <Box
+                        left={"5px"}
+                        width="50px"
+                        background={"#e8e8e8 none repeat scroll 0 0"}
+                        borderRadius="2px"
+                        bottom={"5px"}
+                        color="#000"
+                        fontSize={"11px"}
+                        fontWeight="500"
+                        padding={"0 6px"}
+                        position="absolute"
+                        display="flex"
+                        justifyContent={"space-between"}
+                      >
+                        <Image
+                          src="https://3speak.tv/img/play.svg"
+                          alt="play"
+                        ></Image>
+                        <Text as={"span"}>20</Text>
+                      </Box>
+                      <Box
+                        right={"5px"}
+                        width="auto"
+                        background={"#e8e8e8 none repeat scroll 0 0"}
+                        borderRadius="2px"
+                        bottom={"5px"}
+                        color="#000"
+                        fontSize={"11px"}
+                        fontWeight="500"
+                        padding={"0 6px"}
+                        position="absolute"
+                        display="flex"
+                        justifyContent={"space-between"}
+                      >
+                        <Text as={"span"}>12:48</Text>
+                      </Box>
+                      <Link href="https://3speak.tv/watch?v=cttpodcast/zjvcobqa">
+                        <Image
+                          className="img-fluid"
+                          borderColor={"transparent!important"}
+                          background="linear-gradient(135deg,#171b20 1%,#343a40 100%)"
+                          width={"100% !important"}
+                          padding="5px"
+                          maxHeight={"200px"}
+                          height="auto"
+                          objectFit="cover"
+                          src={`${item.spkvideo.thumbnail_url}`}
+                          alt="Dan Abramov"
+                        />
+                      </Link>
+                    </Box>
+                    <Box minHeight={"65px"}>
+                      <Text
+                        fontSize={"13px"}
+                        overflowWrap="break-word"
+                        textOverflow={"ellipsis"}
+                        overflow="hidden"
+                        maxHeight={"2.8em"}
+                        lineHeight="1.4em"
+                        display={"block"}
+                        marginTop="0.5rem !important"
+                        marginBottom="0.5rem !important"
+                        fontWeight={"500"}
+                      >
+                        {item.title}
+                      </Text>
+                      <Box
+                        width={"calc( 100% - 1rem )"}
+                        display="block"
+                        position={"unset"}
+                      >
+                        <Box
+                          display={"block !important"}
+                          marginTop="0.5rem !important"
+                          justifyContent={"justify !important"}
+                        >
+                          <p className="black_col">
+                            <b>
+                              <Link href="/user/cttpodcast">
+                                <i className="fa fa-user"></i>
+                                {item.author.username}
+                              </Link>
+                            </b>
+                          </p>
+                          <p>a day ago</p>
+                          <p>
+                            <b>$63.17</b>
+                          </p>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                ))}
             </Box>
           </Box>
         </div>

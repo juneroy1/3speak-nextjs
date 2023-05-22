@@ -1,30 +1,30 @@
-import { Link, Text } from "@chakra-ui/react";
+import { Box, Link, Text } from "@chakra-ui/react";
 import React from "react";
 
 const Tags = () => {
   return (
-    <Text
+    <Box
       display={"flex"}
       flexWrap="wrap"
       flexDirection={"row"}
       marginBottom={"0.5rem"}
     >
-      <Text>
+      <Box>
         <Link href="#" color={"blue"} display={"inline-block"}>
           #onlinehotelbookingmanagementsystem&nbsp;
         </Link>
-      </Text>
-      <Text>
+      </Box>
+      <Box>
         <Link href="#" color={"blue"} display={"inline-block"}>
           #system&nbsp;
         </Link>
-      </Text>
-      <Text>
+      </Box>
+      <Box>
         <Link href="#" color={"blue"} display={"inline-block"}>
           #3speakspeaking
         </Link>
-      </Text>
-    </Text>
+      </Box>
+    </Box>
   );
 };
 

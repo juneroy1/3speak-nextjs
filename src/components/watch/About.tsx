@@ -158,7 +158,7 @@ const About = () => {
         >
           Tags:
         </Text>
-        <Text display={"flex"} flexWrap="wrap" flexDirection={"row"}>
+        <Box display={"flex"} flexWrap="wrap" flexDirection={"row"}>
           <Text>
             <Link href="#" color={"blue"} display={"inline-block"}>
               #onlinehotelbookingmanagementsystem&nbsp;
@@ -184,7 +184,7 @@ const About = () => {
               #thisisatestshow&nbsp;
             </Link>
           </Text>
-        </Text>
+        </Box>
       </Box>
 
       <Box
