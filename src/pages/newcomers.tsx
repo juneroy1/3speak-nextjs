@@ -6,13 +6,13 @@ import { Grid, Row } from "src/components/Grid";
 import InfiniteScroll from "react-infinite-scroll-component";
 // import newcomerFeedGenerator from 'utils/getNewcomers';
 
-export async function getServerSideProps() {
-  // await dbConnect();
-  // const newcomers = await newcomerFeedGenerator({})
-  // return {
-  //   props: { newcomers }
-  // }
-}
+// export async function getServerSideProps() {
+//   await dbConnect();
+//   const newcomers = await newcomerFeedGenerator({})
+//   return {
+//     props: { newcomers }
+//   }
+// }
 
 export default function Newcomers({
   newcomers,
