@@ -17,6 +17,13 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faMobileAndroid } from "@fortawesome/free-solid-svg-icons";
+import {
+  Menu,
+  MenuButton,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
 const threespeak = {
   filter: "drop-shadow(2px 4px 6px black)",
 };
@@ -45,11 +52,7 @@ const NAVIGATION = [
     title: "nav.new",
     route: "/new2",
   },
-  {
-    img: "nav/download.svg",
-    title: "nav.desktop",
-    route: "https://github.com/3speaknetwork/3Speak-app/releases/tag/v0.1.20",
-  },
+
   {
     img: "nav/communities.svg",
     title: "nav.communities",
@@ -59,6 +62,14 @@ const NAVIGATION = [
     img: "nav/leaderboard.svg",
     title: "nav.leaderboard",
     route: "/leaderboard",
+  },
+  {
+    img: "nav/download.svg",
+    title: "download_apps",
+  },
+  {
+    img: "nav/spk_network.png",
+    title: "about_3speak",
   },
 ];
 
@@ -103,7 +114,56 @@ export const Sidebar = () => {
             <Box mr="1rem" maxWidth="25px">
               <StyledImage src={`/${img}`} alt={title} width={30} height={30} />
             </Box>
-            <Typography>{t(title)}</Typography>
+            {title == "download_apps" && (
+              <Menu>
+                <MenuButton>Download 3Speak Apps</MenuButton>
+                <MenuList
+                  boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
+                  border="none"
+                  padding={"10px"}
+                  width="180px"
+                >
+                  <MenuGroup
+                    title="Download 3Speak Apps"
+                    fontWeight={"bold"}
+                    fontSize="13px"
+                  >
+                    <MenuItem>iOS App</MenuItem>
+                    <MenuItem>Android App </MenuItem>
+                    <MenuItem>Desktop App </MenuItem>
+                  </MenuGroup>
+                </MenuList>
+              </Menu>
+            )}
+            {title == "about_3speak" && (
+              <Menu>
+                <MenuButton>About 3Speak</MenuButton>
+                <MenuList
+                  boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
+                  border="none"
+                  padding={"10px"}
+                  width="180px"
+                >
+                  <MenuGroup
+                    title="About 3Speak"
+                    fontWeight={"bold"}
+                    fontSize="13px"
+                  >
+                    <MenuItem>About Us</MenuItem>
+                    <MenuItem>FAQ</MenuItem>
+                    <MenuItem>Telegram</MenuItem>
+                    <MenuItem>Discord</MenuItem>
+                    <MenuItem>Twitter</MenuItem>
+                    <MenuItem>3Speak - important links</MenuItem>
+                    <MenuItem>SPK network</MenuItem>
+                    <MenuItem>SPK network - important link</MenuItem>
+                  </MenuGroup>
+                </MenuList>
+              </Menu>
+            )}
+            {title != "download_apps" && title != "about_3speak" && (
+              <Typography>{t(title)}</Typography>
+            )}
           </StyledNav>
         ))}
       </Box>
