@@ -28,22 +28,22 @@ const NAVIGATION = [
   {
     img: "nav/home.svg",
     title: "nav.home",
-    route: "/",
+    route: "/newindex",
   },
   {
     img: "nav/smile.svg",
     title: "nav.first",
-    route: "/newcomers",
+    route: "/firstTime",
   },
   {
     img: "nav/fire.svg",
     title: "nav.trending",
-    route: "/trends",
+    route: "/newcomers2",
   },
   {
     img: "nav/play.svg",
     title: "nav.new",
-    route: "/new",
+    route: "/new2",
   },
   {
     img: "nav/download.svg",
