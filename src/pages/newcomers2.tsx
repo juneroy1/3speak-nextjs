@@ -67,12 +67,31 @@ const NewComers2 = () => {
           TRENDING VIDEOS
         </Text>
       </Box>
-      <Grid padding={"20px"} templateColumns="repeat(4, 1fr)" gap={6}>
+      <Grid
+        padding={"20px"}
+        templateColumns={{
+          base: "repeat(2, 1fr)",
+          md: "repeat(2, 1fr)",
+          lg: "repeat(3, 1fr)",
+          xl: "repeat(4, 1fr)",
+        }}
+        gap={6}
+      >
         {/* {videos.length} */}
         {videos.map((video, index) => (
           <GridItem w="100%" h="100%" key={index}>
-            <Image padding={'5px'} backgroundColor={'#222 !important'} alt="test" src={`${video.thumbnail}`} />
-            <Text fontSize={'13px'} fontWeight={"bold"} marginY={"10px"} as="h3">
+            <Image
+              padding={"5px"}
+              backgroundColor={"#222 !important"}
+              alt="test"
+              src={`${video.thumbnail}`}
+            />
+            <Text
+              fontSize={"13px"}
+              fontWeight={"bold"}
+              marginY={"10px"}
+              as="h3"
+            >
               {video.title}
             </Text>
             <Text fontWeight={"bold"} marginTop={"10px"} as="h3">
