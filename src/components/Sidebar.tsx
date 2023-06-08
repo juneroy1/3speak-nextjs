@@ -30,6 +30,7 @@ import {
 import { useMediaQuery } from "react-responsive";
 import { css } from "@emotion/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { FaAppStoreIos, FaInfo, FaInfoCircle } from "react-icons/fa";
 const threespeak = {
   filter: "drop-shadow(2px 4px 6px black)",
 };
@@ -153,12 +154,22 @@ export const Sidebar = () => {
                 alignItems="center"
               >
                 <Box mr="1rem" maxWidth="25px">
-                  <StyledImage
-                    src={`/${img}`}
-                    alt={title}
-                    width={30}
-                    height={30}
-                  />
+                  {title == "download_apps" && (
+                    <FaAppStoreIos size={"2rem"} color="black" />
+                  )}
+
+                  {title == "about_3speak" && (
+                    <FaInfoCircle size={"1.5rem"} color="black" />
+                  )}
+
+                  {title != "download_apps" && title != "about_3speak" && (
+                    <StyledImage
+                      src={`/${img}`}
+                      alt={title}
+                      width={30}
+                      height={30}
+                    />
+                  )}
                 </Box>
                 {title == "download_apps" && (
                   <Box position="relative">
