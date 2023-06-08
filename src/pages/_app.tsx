@@ -5,16 +5,17 @@ import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
 import { useRouter } from "next/router";
-import { Box, Sidebar } from "src/components";
+import { Sidebar } from "src/components";
 import styled from "styled-components";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
 
 import { ApolloProvider } from "@apollo/client";
 import client from "../lib/apolloClient";
+import { css } from "@emotion/react";
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -23,7 +24,18 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Provider store={store}>
-      <StyledGrid>
+      {/* <StyledGrid> */}
+      <Flex
+        css={css`
+          @media (max-width: 768px) {
+            flex-direction: column;
+          }
+
+          @media (min-width: 769px) {
+            flex-direction: row;
+          }
+        `}
+      >
         <Box>{!isAuth && <Sidebar />}</Box>
         <Box width={"100%"} backgroundColor="#EFF4F6">
           <ChakraProvider>
@@ -32,7 +44,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             </ApolloProvider>
           </ChakraProvider>
         </Box>
-      </StyledGrid>
+      </Flex>
+
+      {/* </StyledGrid> */}
     </Provider>
   );
 }
