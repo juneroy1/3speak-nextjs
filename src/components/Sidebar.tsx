@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Box } from "./Box";
-import { Flex } from "./Flex";
+// import { Flex } from "./Flex";
 import { Typography } from "./Typography";
 import { useTranslation } from "next-export-i18n";
 import { useRouter } from "next/router";
@@ -19,6 +19,7 @@ import {
 import { faMobileAndroid } from "@fortawesome/free-solid-svg-icons";
 import {
   Button,
+  Flex,
   Menu,
   MenuButton,
   MenuDivider,
@@ -27,6 +28,8 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { useMediaQuery } from "react-responsive";
+import { css } from "@emotion/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 const threespeak = {
   filter: "drop-shadow(2px 4px 6px black)",
 };
@@ -81,14 +84,34 @@ export const Sidebar = () => {
   const [search, setSearch] = useState("");
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const [showNav, setShowNav] = useState(true);
+
   // const isMedium = useBreakpointValue({ base: false, md: true });
 
   useEffect(() => {
     console.log("isMobile", isMobile);
+    if (isMobile) {
+      setShowNav(true);
+      console.log("showNav", showNav);
+    } else {
+      setShowNav(false);
+      console.log("showNav", showNav);
+    }
   }, [isMobile]);
   return (
     <Flex p="1rem" flexDirection="column">
-      <Flex justifyContent="center" width="100%">
+      <Flex
+        css={css`
+          @media (max-width: 768px) {
+            justify-content: space-between;
+          }
+
+          @media (min-width: 769px) {
+            justify-content: center;
+          }
+        `}
+        width="100%"
+      >
         <StyledLink href="/">
           <Box width={"180px"}>
             <Image
@@ -99,8 +122,17 @@ export const Sidebar = () => {
             />
           </Box>
         </StyledLink>
+        {isMobile && (
+          <Button
+            variant={"outline"}
+            onClick={() => setShowNav(!showNav)}
+            colorScheme="blackAlpha"
+          >
+            <HamburgerIcon boxSize={"3rem"} />
+          </Button>
+        )}
       </Flex>
-      {!isMobile && (
+      {!showNav && (
         <Box>
           <Box mb="1rem" width="100%">
             <Link href="/auth/login">
@@ -281,7 +313,7 @@ export const Sidebar = () => {
         </Box>
       )}
 
-      {!isMobile && (
+      {!showNav && (
         <Box>
           <Flex width="100%" alignItems="center" mt="1rem">
             <Box maxWidth="2rem">
@@ -324,7 +356,7 @@ export const Sidebar = () => {
         </Box>
       )}
 
-      {!isMobile && (
+      {!showNav && (
         <Box className="nav-item text-center ">
           <Link
             target="_blank"
