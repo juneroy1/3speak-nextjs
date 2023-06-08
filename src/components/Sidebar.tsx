@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Box } from "./Box";
 import { Flex } from "./Flex";
@@ -26,6 +26,7 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import { useMediaQuery } from "react-responsive";
 const threespeak = {
   filter: "drop-shadow(2px 4px 6px black)",
 };
@@ -79,7 +80,12 @@ export const Sidebar = () => {
   const [communitiesPopup, setCommunitiesPopup] = useState(false);
   const [search, setSearch] = useState("");
   const { t } = useTranslation();
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  // const isMedium = useBreakpointValue({ base: false, md: true });
 
+  useEffect(() => {
+    console.log("isMobile", isMobile);
+  }, [isMobile]);
   return (
     <Flex p="1rem" flexDirection="column">
       <Flex justifyContent="center" width="100%">
@@ -94,272 +100,302 @@ export const Sidebar = () => {
           </Box>
         </StyledLink>
       </Flex>
-      <Box mb="1rem" width="100%">
-        <Link href="/auth/login">
-          <StyledButton py={3}>{t("mainLogin")}</StyledButton>
-        </Link>
-      </Box>
-      <Box>
-        {NAVIGATION.map(({ img, title, route }) => (
-          <StyledNav
-            onClick={() =>
-              route ? router.push(route) : setCommunitiesPopup(true)
-            }
-            width="100%"
-            py="1rem"
-            px="0.5rem"
-            key={`nav_sidebar_${title}`}
-            justifyContent="flex-start"
-            alignItems="center"
-          >
-            <Box mr="1rem" maxWidth="25px">
-              <StyledImage src={`/${img}`} alt={title} width={30} height={30} />
-            </Box>
-            {title == "download_apps" && (
-              <Box position="relative">
-                <Menu>
-                  <MenuButton>Download 3Speak Apps</MenuButton>
-                  <MenuList
-                    display={"flex"}
-                    flexDirection="column"
-                    justifyContent={"center"}
-                    alignItems="center"
-                    boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
-                    background="#eff4f6"
-                    width={"200px"}
-                    left="-40px"
-                    position="absolute" // or position="absolute"
-                    zIndex="100" // or any higher value
-                  >
-                    <MenuGroup
-                      marginTop={"10px"}
-                      title="Download 3Speak Apps"
-                      fontWeight={"bold"}
-                      fontSize="13px"
-                    >
-                      <MenuItem paddingTop={"5px"} paddingBottom={"10px"}>
-                        iOS App
-                      </MenuItem>
-                      <MenuItem paddingBottom={"10px"}>Android App</MenuItem>
-                      <MenuItem paddingBottom={"10px"}>Desktop App</MenuItem>
-                    </MenuGroup>
-                  </MenuList>
-                </Menu>
-              </Box>
-              // <Menu>
-              //   <MenuButton>Download 3Speak Apps</MenuButton>
-              //   <MenuList
-              //     boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
-              //     border="none"
-              //     padding={"10px"}
-              //     width="180px"
-              //   >
-              //     <MenuGroup
-              //       title="Download 3Speak Apps"
-              //       fontWeight={"bold"}
-              //       fontSize="13px"
-              //     >
-              //       <MenuItem>iOS App</MenuItem>
-              //       <MenuItem>Android App </MenuItem>
-              //       <MenuItem>Desktop App </MenuItem>
-              //     </MenuGroup>
-              //   </MenuList>
-              // </Menu>
-            )}
-            {title == "nav.communities" && (
-              <Box position="relative">
-                <Menu>
-                  <MenuButton>Communities</MenuButton>
-                  <MenuList
-                    display={"flex"}
-                    flexDirection="column"
-                    justifyContent={"center"}
-                    alignItems="center"
-                    boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
-                    background="#eff4f6"
-                    width={"200px"}
-                    left="-40px"
-                    position="absolute" // or position="absolute"
-                    zIndex="100" // or any higher value
-                  >
-                    <MenuGroup
-                      marginTop={"10px"}
-                      title="Communities"
-                      fontWeight={"bold"}
-                      fontSize="13px"
-                    >
-                      <MenuItem paddingTop={"5px"} paddingBottom={"10px"}>
-                        Create
-                      </MenuItem>
-                      <MenuItem paddingBottom={"10px"}>
-                        <Link href={"/communities"}>All Communities</Link>
-                      </MenuItem>
-                      <MenuItem paddingBottom={"10px"}>Threespeak</MenuItem>
-                      <MenuItem paddingBottom={"10px"}>
-                        Citizen Journalist
-                      </MenuItem>
-                      <MenuItem paddingBottom={"10px"}>Threeshorts</MenuItem>
-                      <MenuItem paddingBottom={"10px"}>
-                        Coronavirus Pandemic
-                      </MenuItem>
-                      <MenuItem paddingBottom={"10px"}>Covid-19</MenuItem>
-                    </MenuGroup>
-                  </MenuList>
-                </Menu>
-              </Box>
-            )}
-            {title == "about_3speak" && (
-              <Box position="relative">
-                <Menu>
-                  <MenuButton>About 3Speak</MenuButton>
-                  <MenuList
-                    display={"flex"}
-                    flexDirection="column"
-                    justifyContent={"center"}
-                    alignItems="center"
-                    boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
-                    background="#eff4f6"
-                    width={"200px"}
-                    left="-40px"
-                    position="absolute" // or position="absolute"
-                    zIndex="100" // or any higher value
-                  >
-                    <MenuGroup
-                      marginTop={"10px"}
-                      title="About 3Speak"
-                      fontWeight={"bold"}
-                      fontSize="13px"
-                    >
-                      <MenuItem paddingTop={"5px"} paddingBottom={"10px"}>
-                        About Us
-                      </MenuItem>
-                      <MenuItem paddingBottom={"10px"}>FAQ</MenuItem>
-                      <MenuItem paddingBottom={"10px"}>Telegram</MenuItem>
-                      <MenuItem paddingBottom={"10px"}>Discord</MenuItem>
-                      <MenuItem paddingBottom={"10px"}>Twitter</MenuItem>
-                      <MenuItem paddingBottom={"10px"}>
-                        3Speak - important links
-                      </MenuItem>
-                      <MenuItem paddingBottom={"10px"}>SPK network</MenuItem>
-                      <MenuItem paddingBottom={"10px"}>
-                        SPK network - important link
-                      </MenuItem>
-                    </MenuGroup>
-                  </MenuList>
-                </Menu>
-              </Box>
-            )}
-            {title != "download_apps" &&
-              title != "about_3speak" &&
-              title != "nav.communities" && <Typography>{t(title)}</Typography>}
-          </StyledNav>
-        ))}
-      </Box>
-      <Flex width="100%" alignItems="center" mt="1rem">
-        <Box maxWidth="2rem">
-          <Image
-            alt="search icon"
-            src="/nav/search.svg"
-            width={45}
-            height={45}
-          />
+      {!isMobile && (
+        <Box>
+          <Box mb="1rem" width="100%">
+            <Link href="/auth/login">
+              <StyledButton py={3}>{t("mainLogin")}</StyledButton>
+            </Link>
+          </Box>
+          <Box>
+            {NAVIGATION.map(({ img, title, route }) => (
+              <StyledNav
+                onClick={() =>
+                  route ? router.push(route) : setCommunitiesPopup(true)
+                }
+                width="100%"
+                py="1rem"
+                px="0.5rem"
+                key={`nav_sidebar_${title}`}
+                justifyContent="flex-start"
+                alignItems="center"
+              >
+                <Box mr="1rem" maxWidth="25px">
+                  <StyledImage
+                    src={`/${img}`}
+                    alt={title}
+                    width={30}
+                    height={30}
+                  />
+                </Box>
+                {title == "download_apps" && (
+                  <Box position="relative">
+                    <Menu>
+                      <MenuButton>Download 3Speak Apps</MenuButton>
+                      <MenuList
+                        display={"flex"}
+                        flexDirection="column"
+                        justifyContent={"center"}
+                        alignItems="center"
+                        boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
+                        background="#eff4f6"
+                        width={"200px"}
+                        left="-40px"
+                        position="absolute" // or position="absolute"
+                        zIndex="100" // or any higher value
+                      >
+                        <MenuGroup
+                          marginTop={"10px"}
+                          title="Download 3Speak Apps"
+                          fontWeight={"bold"}
+                          fontSize="13px"
+                        >
+                          <MenuItem paddingTop={"5px"} paddingBottom={"10px"}>
+                            iOS App
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            Android App
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            Desktop App
+                          </MenuItem>
+                        </MenuGroup>
+                      </MenuList>
+                    </Menu>
+                  </Box>
+                  // <Menu>
+                  //   <MenuButton>Download 3Speak Apps</MenuButton>
+                  //   <MenuList
+                  //     boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
+                  //     border="none"
+                  //     padding={"10px"}
+                  //     width="180px"
+                  //   >
+                  //     <MenuGroup
+                  //       title="Download 3Speak Apps"
+                  //       fontWeight={"bold"}
+                  //       fontSize="13px"
+                  //     >
+                  //       <MenuItem>iOS App</MenuItem>
+                  //       <MenuItem>Android App </MenuItem>
+                  //       <MenuItem>Desktop App </MenuItem>
+                  //     </MenuGroup>
+                  //   </MenuList>
+                  // </Menu>
+                )}
+                {title == "nav.communities" && (
+                  <Box position="relative">
+                    <Menu>
+                      <MenuButton>Communities</MenuButton>
+                      <MenuList
+                        display={"flex"}
+                        flexDirection="column"
+                        justifyContent={"center"}
+                        alignItems="center"
+                        boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
+                        background="#eff4f6"
+                        width={"200px"}
+                        left="-40px"
+                        position="absolute" // or position="absolute"
+                        zIndex="100" // or any higher value
+                      >
+                        <MenuGroup
+                          marginTop={"10px"}
+                          title="Communities"
+                          fontWeight={"bold"}
+                          fontSize="13px"
+                        >
+                          <MenuItem paddingTop={"5px"} paddingBottom={"10px"}>
+                            Create
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            <Link href={"/communities"}>All Communities</Link>
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>Threespeak</MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            Citizen Journalist
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            Threeshorts
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            Coronavirus Pandemic
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>Covid-19</MenuItem>
+                        </MenuGroup>
+                      </MenuList>
+                    </Menu>
+                  </Box>
+                )}
+                {title == "about_3speak" && (
+                  <Box position="relative">
+                    <Menu>
+                      <MenuButton>About 3Speak</MenuButton>
+                      <MenuList
+                        display={"flex"}
+                        flexDirection="column"
+                        justifyContent={"center"}
+                        alignItems="center"
+                        boxShadow={"0 1px 4px rgba(0,0,0,0.3)"}
+                        background="#eff4f6"
+                        width={"200px"}
+                        left="-40px"
+                        position="absolute" // or position="absolute"
+                        zIndex="100" // or any higher value
+                      >
+                        <MenuGroup
+                          marginTop={"10px"}
+                          title="About 3Speak"
+                          fontWeight={"bold"}
+                          fontSize="13px"
+                        >
+                          <MenuItem paddingTop={"5px"} paddingBottom={"10px"}>
+                            About Us
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>FAQ</MenuItem>
+                          <MenuItem paddingBottom={"10px"}>Telegram</MenuItem>
+                          <MenuItem paddingBottom={"10px"}>Discord</MenuItem>
+                          <MenuItem paddingBottom={"10px"}>Twitter</MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            3Speak - important links
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            SPK network
+                          </MenuItem>
+                          <MenuItem paddingBottom={"10px"}>
+                            SPK network - important link
+                          </MenuItem>
+                        </MenuGroup>
+                      </MenuList>
+                    </Menu>
+                  </Box>
+                )}
+                {title != "download_apps" &&
+                  title != "about_3speak" &&
+                  title != "nav.communities" && (
+                    <Typography>{t(title)}</Typography>
+                  )}
+              </StyledNav>
+            ))}
+          </Box>
         </Box>
-        <StyledInput
-          onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={(e) =>
-            e.key === "Enter" &&
-            router.push(`/search?q=${search.split(" ").join("+")}`)
-          }
-          placeholder="Search"
-          type="text"
-        />
-      </Flex>
-      <Typography mb="0.5rem" mt="1rem">
-        3Speak
-      </Typography>
-      <Box ml="0.5rem" mt="1rem">
-        <AboutText
-          onClick={() => router.push("/about-us")}
-          color="rgba(0,0,0,0.5)"
-          mb="1rem"
-        >
-          {t("aboutUs")}
-        </AboutText>
-        <AboutText
-          onClick={() => router.push("/faq")}
-          color="rgba(0,0,0,0.5)"
-          mb="1rem"
-        >
-          {t("faq")}
-        </AboutText>
-      </Box>
-      <Box className="nav-item text-center ">
-        <Link
-          target="_blank"
-          href="https://twitter.com/3speakonline?utm_source=3speak.tv"
-        >
-          <FontAwesomeIcon
-            className="fa-2x text-secondary ms-3 mb-1"
-            icon={faTwitter}
-          />
-        </Link>
-        <Link
-          target="_blank"
-          href="https://t.me/threespeak?utm_source=3speak.tv"
-        >
-          <FontAwesomeIcon
-            className="fa-2x text-secondary ms-3 mb-1"
-            icon={faTelegram}
-          />
-        </Link>
-        <Link target="_blank" href="https://discord.gg/NSFS2VGj83">
-          <FontAwesomeIcon
-            className="fa-2x text-secondary ms-3 mb-1"
-            icon={faDiscord}
-          />
-        </Link>
-        <Link
-          target="_blank"
-          title="Visit Our Blog"
-          href="https://hive.blog/@threespeak"
-        >
-          <span className="ms-3">
-            <StyledImage
-              src="/nav/blog.png"
-              alt={"3speak blog"}
-              width={30}
-              height={30}
-              style={navblog}
+      )}
+
+      {!isMobile && (
+        <Box>
+          <Flex width="100%" alignItems="center" mt="1rem">
+            <Box maxWidth="2rem">
+              <Image
+                alt="search icon"
+                src="/nav/search.svg"
+                width={45}
+                height={45}
+              />
+            </Box>
+            <StyledInput
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) =>
+                e.key === "Enter" &&
+                router.push(`/search?q=${search.split(" ").join("+")}`)
+              }
+              placeholder="Search"
+              type="text"
             />
-          </span>
-        </Link>
-        <Link target="_blank" title="SPK Network" href="https://spk.network">
-          <span className="ms-3">
-            <StyledImage
-              src="/nav/spk_network.png"
-              alt={"SPK Network"}
-              width={30}
-              height={30}
-              style={threespeak}
+          </Flex>
+          <Typography mb="0.5rem" mt="1rem">
+            3Speak
+          </Typography>
+          <Box ml="0.5rem" mt="1rem">
+            <AboutText
+              onClick={() => router.push("/about-us")}
+              color="rgba(0,0,0,0.5)"
+              mb="1rem"
+            >
+              {t("aboutUs")}
+            </AboutText>
+            <AboutText
+              onClick={() => router.push("/faq")}
+              color="rgba(0,0,0,0.5)"
+              mb="1rem"
+            >
+              {t("faq")}
+            </AboutText>
+          </Box>
+        </Box>
+      )}
+
+      {!isMobile && (
+        <Box className="nav-item text-center ">
+          <Link
+            target="_blank"
+            href="https://twitter.com/3speakonline?utm_source=3speak.tv"
+          >
+            <FontAwesomeIcon
+              className="fa-2x text-secondary ms-3 mb-1"
+              icon={faTwitter}
             />
-          </span>
-        </Link>
-        <Link target="_blank" href="https://testflight.apple.com/join/0tipqwsZ">
-          <FontAwesomeIcon
-            className="fa-2x text-secondary ms-3"
-            icon={faAppStoreIos}
-          />
-        </Link>
-        <Link
-          target="_blank"
-          href="https://appdistribution.firebase.dev/i/047cfb506633e639"
-        >
-          <FontAwesomeIcon
-            className="fa-2x text-secondary ms-3"
-            icon={faAndroid}
-          />
-        </Link>
-      </Box>
+          </Link>
+          <Link
+            target="_blank"
+            href="https://t.me/threespeak?utm_source=3speak.tv"
+          >
+            <FontAwesomeIcon
+              className="fa-2x text-secondary ms-3 mb-1"
+              icon={faTelegram}
+            />
+          </Link>
+          <Link target="_blank" href="https://discord.gg/NSFS2VGj83">
+            <FontAwesomeIcon
+              className="fa-2x text-secondary ms-3 mb-1"
+              icon={faDiscord}
+            />
+          </Link>
+          <Link
+            target="_blank"
+            title="Visit Our Blog"
+            href="https://hive.blog/@threespeak"
+          >
+            <span className="ms-3">
+              <StyledImage
+                src="/nav/blog.png"
+                alt={"3speak blog"}
+                width={30}
+                height={30}
+                style={navblog}
+              />
+            </span>
+          </Link>
+          <Link target="_blank" title="SPK Network" href="https://spk.network">
+            <span className="ms-3">
+              <StyledImage
+                src="/nav/spk_network.png"
+                alt={"SPK Network"}
+                width={30}
+                height={30}
+                style={threespeak}
+              />
+            </span>
+          </Link>
+          <Link
+            target="_blank"
+            href="https://testflight.apple.com/join/0tipqwsZ"
+          >
+            <FontAwesomeIcon
+              className="fa-2x text-secondary ms-3"
+              icon={faAppStoreIos}
+            />
+          </Link>
+          <Link
+            target="_blank"
+            href="https://appdistribution.firebase.dev/i/047cfb506633e639"
+          >
+            <FontAwesomeIcon
+              className="fa-2x text-secondary ms-3"
+              icon={faAndroid}
+            />
+          </Link>
+        </Box>
+      )}
     </Flex>
   );
 };
